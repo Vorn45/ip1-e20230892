@@ -13,6 +13,15 @@
 
 ---
 
+## 2026-10-20 · Fix CI failure for api job
+**Tool:** Antigravity (Gemini Flash)
+**Asked:** Fix failing GitHub Actions CI on the `api` push job
+**Kept:** Regenerated and synced `api/package-lock.json` with prisma dependencies, tested local `npm ci` and `npm run build`
+**Rejected:** —
+**Checked by:** Tested `npm ci` and `npm run build` locally in `api/` (both passed with exit code 0)
+
+---
+
 <!-- Copy this template for each new entry:
 
 ## YYYY-MM-DD · Short description
