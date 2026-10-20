@@ -9,6 +9,7 @@ coverage/
 # Production builds
 dist/
 build/
+*.tsbuildinfo
 
 # Misc
 .DS_Store
