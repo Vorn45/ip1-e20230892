@@ -38,3 +38,11 @@ lerna-debug.log*
 *.njsproj
 *.sln
 *.sw?
+
+# Course practice sessions & local scratch folders
+campus-events-*/
+class*/
+week*/
+Projectv1/
+project/
+

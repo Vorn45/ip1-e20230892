@@ -22,6 +22,15 @@
 
 ---
 
+## 2026-11-06 · Milestone M0 proposal and design specifications
+**Tool:** Antigravity (Gemini Flash)
+**Asked:** Formulate M0 proposal according to course guidelines for full-stack Vue 3 + NestJS + PostgreSQL project
+**Kept:** Project domain (Lab Equipment Lending System), 2 roles (Student, Lab Assistant), 8 user stories with 3 detailed acceptance criteria, MVP scope split, 4 relational entities (User, Category, Equipment, Loan), stretch feature (Search, filter and pagination), and MILESTONES.md design explanation for MVP scope reduction
+**Rejected:** External file storage upload stretch feature to eliminate Docker disk mount complications during early milestones
+**Checked by:** Verified strict alignment against M0 checklist and Appendix A template requirements
+
+---
+
 <!-- Copy this template for each new entry:
 
 ## YYYY-MM-DD · Short description
