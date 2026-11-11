@@ -53,4 +53,4 @@ What it does in this app:
 Provides a server-side paginated task explorer (10 items per page) allowing managers and team members to search tasks by title or description and filter simultaneously by project, task status (`TODO`, `IN_PROGRESS`, `IN_REVIEW`, `DONE`), and priority (`LOW`, `MEDIUM`, `HIGH`). The NestJS API returns the filtered slice alongside pagination metadata (`page`, `limit`, `totalCount`, `totalPages`), and the Vue 3 UI renders loading, empty, and error states cleanly.
 
 ## Repository
-https://github.com/Vorn45/ip1--e20230892-
+https://github.com/Vorn45/ip1-e20230892
