@@ -9,16 +9,16 @@
 - [x] Problem stated in two sentences; target users and at least 2 roles named
 - [x] 6–10 user stories, with acceptance criteria for the 3 most important
 - [x] MVP scope split into must-have and nice-to-have
-- [x] Entity list with main attributes and relations; at least 3 entities (User, Category, Equipment, Loan)
+- [x] Entity list with main attributes and relations; at least 3 entities (User, Project, Task, Comment)
 - [x] Chosen stretch feature named (Search, filter and pagination)
 
 ### Explain: Which story did you cut from the MVP, and why?
-**Story cut from MVP:** Story 8 (*"As a student, I want to upload a photo of the equipment condition upon pickup so that I am not held responsible for pre-existing scratches or damage."*).
+**Stories cut from MVP:** Story 8 (*"As a Team Member, I want to upload file attachments such as design mockups or PDF specs directly onto a task so that reference documents are stored with the work item."*) and Story 9 (*"As a Project Manager, I want to receive automated daily email reminders for overdue tasks so that I can follow up with assignees before project deadlines slip."*).
 
-**Why it was cut:**
-1. **Focus on Core Business Logic and Relational Integrity:** The primary value of the application is orchestrating the lending lifecycle (search, loan request, approval, handover, return) and enforcing role-based permissions and ownership checks between students and lab assistants. Story 8 introduces file handling, which is peripheral to this core domain.
-2. **Reduced Infrastructure and Deployment Complexity:** File uploads require multipart form parsing, MIME type validation, file size limits, disk storage permissions in Docker containers, or external object storage (e.g. AWS S3/MinIO). Cutting Story 8 prevents unnecessary deployment friction and security exposure (e.g., malicious file execution or arbitrary file writes) during the early stages.
-3. **Feasibility within Timeline:** By deferring file uploads to a post-MVP enhancement, the development effort remains focused on mastering strict TypeScript, NestJS DTO validation pipes, Prisma relations with PostgreSQL, and responsive Vue 3 state management with Pinia.
+**Why they were cut:**
+1. **Focus on Multi-User Planning & Role-Based Ownership:** The core goal of PlanFlow is coordinating projects, task assignments, status review workflows (`TODO` -> `IN_PROGRESS` -> `IN_REVIEW` -> `DONE`), and task discussions with strict role (`MANAGER` vs `MEMBER`) and ownership boundaries—so the application clearly serves collaborative project planning rather than a simple personal to-do list.
+2. **Reduced Infrastructure and Deployment Complexity:** Story 8 requires multipart upload parsing, MIME/size validation, and persistent disk volumes or object storage in Docker, while Story 9 introduces external SMTP credentials and scheduled background jobs. Cutting both removes external failure points and security risks during the core build.
+3. **Feasibility within Timeline:** Deferring attachments and email notifications keeps the MVP focused on clean relational CRUD in NestJS + Prisma/PostgreSQL, server-side search/filter/pagination, Pinia state management, and thorough unit/e2e test coverage.
 
 ---
 

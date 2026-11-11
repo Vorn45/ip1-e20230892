@@ -1,39 +1,44 @@
-# Specification: LabTrack
+# Specification: PlanFlow
 
 ## Overview
-LabTrack is a web application designed for university departments to manage lab equipment lending between students and lab assistants.
+PlanFlow is a full-stack team project planning and task tracker web application for small project teams and university capstone groups, supporting role-based project setup (`MANAGER`) and task execution (`MEMBER`).
 
 ## User Stories & Acceptance Criteria
 
-### US-01: Submit Loan Request
-**As a student**, I want to submit a loan request for available lab equipment so that I can reserve the necessary tools for my laboratory assignments.
+### US-01: Create Project and Assign Tasks
+**As a Project Manager**, I want to create a project and assign prioritized tasks with due dates to team members so that everyone knows what they own and when it is due.
 **Acceptance Criteria:**
-- Given an equipment item with status `AVAILABLE` and a requested period within 7 days, when the student submits the request, then a `Loan` record is created with status `PENDING` linked to the student.
-- Given an equipment item currently `BORROWED` or in `MAINTENANCE`, when the student attempts to borrow it, then the system prevents submission and alerts the user.
+- Given a valid title, description, and deadline, when a `MANAGER` creates a project, then a `Project` record is stored with `ownerId` set to the authenticated manager.
+- Given a valid `projectId`, title, priority (`LOW`, `MEDIUM`, `HIGH`), due date, and `assigneeId`, when a `MANAGER` creates a task, then a `Task` record is created with status `TODO` and appears in the project detail view and assignee's task list.
+- Given a `MEMBER` user, when they attempt to create a project or assign a task, then the API returns `403 Forbidden`.
 
-### US-02: Review Loan Requests
-**As a lab assistant**, I want to approve or reject pending equipment loan requests so that inventory allocation is verified and controlled.
+### US-02: Update Assigned Task Status & Ownership Check
+**As a Team Member**, I want to update the status of my own assigned tasks and submit them for review so that the project manager can track real-time progress and verify completion.
 **Acceptance Criteria:**
-- Given a list of `PENDING` loans, when the assistant clicks approve, then the loan status changes to `APPROVED` and the equipment status changes to `BORROWED`.
-- Given a pending loan, when the assistant clicks reject with a reason note, then the loan status changes to `REJECTED` and the equipment remains `AVAILABLE`.
+- Given a task whose `assigneeId` equals the logged-in member's ID, when the member updates status from `TODO` to `IN_PROGRESS` or `IN_REVIEW`, then the update succeeds and returns `200 OK`.
+- Given a task assigned to a different user, when a `MEMBER` attempts to update or delete it, then the API rejects the request with `403 Forbidden`.
+- Given a `MEMBER` attempting to set a task directly to `DONE`, then the API rejects the transition because final approval is restricted to `MANAGER`.
 
 ### US-03: Search, Filter, and Pagination (Stretch Feature)
-**As a student or lab assistant**, I want to search and filter equipment by keyword and category with pagination so that I can quickly locate specific items without loading hundreds of records at once.
+**As a Project Manager or Team Member**, I want to search and filter tasks across projects by keyword, status, priority, and project with pagination so that I can quickly find urgent deliverables in large plans.
 **Acceptance Criteria:**
-- Given query params `search`, `categoryId`, `status`, `page`, and `limit`, when the API is called, then it returns a paginated list of matching items along with pagination metadata (`totalCount`, `totalPages`, `page`, `limit`).
-- Given an empty search result, when filters yield no matches, then an informative empty state is shown on the UI.
+- Given query params `search`, `status`, `priority`, `projectId`, `page`, and `limit`, when the tasks endpoint is called, then it returns matching tasks paginated at 10 per page alongside pagination metadata (`page`, `limit`, `totalCount`, `totalPages`).
+- Given filters that match zero tasks, when the API responds, then the UI displays a clear empty state message.
 
-### US-04: View Loan History
-**As a student**, I want to view my current and past loan history so that I can track due dates and avoid late return penalties.
+### US-04: Review and Approve Tasks
+**As a Project Manager**, I want to review `IN_REVIEW` tasks and approve them as `DONE` or return them to `IN_PROGRESS` with review feedback so that deliverables meet quality expectations before closing.
 
-### US-05: Cancel Loan Request
-**As a student**, I want to cancel my pending loan request so that the equipment becomes available to others if I no longer need it.
+### US-05: Task Comments & Ownership
+**As a Team Member or Project Manager**, I want to add, edit, and delete my own comments on a task so that blockers, progress updates, and review notes remain documented alongside the work item.
 
-### US-06: Manage Inventory
-**As a lab assistant**, I want to add new equipment items to the inventory with category, model, and serial number so that students can discover newly acquired apparatus.
+### US-06: Manage Owned Projects
+**As a Project Manager**, I want to update project details, change project status (`PLANNING`, `ACTIVE`, `COMPLETED`, `ARCHIVED`), or delete projects I own so that the workspace reflects current priorities.
 
-### US-07: Process Return
-**As a lab assistant**, I want to record the return of borrowed equipment so that the loan is marked as `RETURNED` and the equipment status returns to `AVAILABLE`.
+### US-07: Project Progress Overview
+**As a Team Member**, I want to view a project overview displaying task completion progress and upcoming deadlines so that I can prioritize my daily workload effectively.
 
-### US-08: Photo Documentation (Nice-to-Have / Future Scope)
-**As a student**, I want to upload a photo of the equipment condition upon pickup so that I am not held responsible for pre-existing scratches or damage.
+### US-08: Task File Attachments (Nice-to-Have / Future Scope)
+**As a Team Member**, I want to upload file attachments such as design mockups or PDF specs directly onto a task so that reference documents are stored with the work item.
+
+### US-09: Automated Deadline Reminders (Nice-to-Have / Future Scope)
+**As a Project Manager**, I want to receive automated daily email reminders for overdue tasks so that I can follow up with assignees before project deadlines slip.

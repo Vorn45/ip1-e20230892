@@ -9,3 +9,4 @@
 | 2026-10-20 | Separate `web/` and `api/` folders    | Clear separation of concerns, independent deploys |
 | 2026-11-06 | Project Domain: Lab Equipment Lending | Meets 2-role requirement (Student/Lab Assistant), natural 1-N relations (Category, Equipment, Loan, User), clear ownership & status transitions |
 | 2026-11-06 | Stretch Feature: Search, filter & pagination | High reliability across NestJS & Prisma, directly benefits inventory usability without fragile external dependencies |
+| 2026-11-11 | Pivot Project Domain: PlanFlow (Team Project Planning) | Switched topic to multi-user project planning & task collaboration with `MANAGER`/`MEMBER` roles, review workflow, and 4 entities (`User`, `Project`, `Task`, `Comment`) while retaining Search, filter & pagination stretch feature |

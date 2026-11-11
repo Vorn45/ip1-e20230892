@@ -31,6 +31,15 @@
 
 ---
 
+## 2026-11-11 · Pivot M0 proposal topic to PlanFlow (Project Planning)
+**Tool:** Antigravity (Gemini)
+**Asked:** Update M0 proposal and specifications after switching project topic to a Team Project Planning web app with Search, filter and pagination
+**Kept:** PlanFlow domain (`MANAGER` and `MEMBER` roles), 4 entities (`User`, `Project`, `Task`, `Comment`), 9 user stories with acceptance criteria for top 3, ownership/review rules distinguishing it from a simple to-do list, updated `MILESTONES.md`, `docs/SPEC.md`, and `DECISIONS.md`
+**Rejected:** File attachment uploads and automated email reminders (deferred to nice-to-have) to keep MVP focused on core planning workflows
+**Checked by:** Verified alignment with Appendix A template and M0 checklist criteria
+
+---
+
 <!-- Copy this template for each new entry:
 
 ## YYYY-MM-DD · Short description
