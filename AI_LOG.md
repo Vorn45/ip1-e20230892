@@ -58,6 +58,15 @@
 
 ---
 
+## 2026-11-15 · Integrate Material Design Icons (Iconify MDI)
+**Tool:** Antigravity (Gemini)
+**Asked:** Integrate Material Design Icons from `https://icon-sets.iconify.design/mdi/` using `@iconify/vue` and `@iconify-json/mdi`
+**Kept:** Installed `@iconify/vue` and `@iconify-json/mdi`, generated `web/src/plugins/icons.ts` with pre-registered offline-first MDI SVG icon definitions (navigation, dashboard stats, task statuses, approval actions, search, filters, and drag-and-drop attachments), replaced all emojis and raw SVGs with `<Icon icon="mdi:..." />` across `HeaderBar.vue`, `DashboardView.vue`, `TasksView.vue`, `CreateTaskView.vue`, `TaskDetailView.vue`, `EmptyState.vue`, and `ErrorState.vue`
+**Rejected:** Unfiltered multi-megabyte icon font bundles in favor of lightweight pre-bundled MDI icon definitions (under 10KB total)
+**Checked by:** Ran `npm run check` (0 errors), `npm run lint` (0 errors), and `npm run build` (0 errors) successfully
+
+---
+
 <!-- Copy this template for each new entry:
 
 ## YYYY-MM-DD · Short description

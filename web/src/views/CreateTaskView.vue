@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, reactive } from 'vue';
 import { useRouter } from 'vue-router';
+import { Icon } from '@iconify/vue';
 import { useTaskStore } from '../stores/taskStore';
 import { useUserStore } from '../stores/userStore';
 import { useLangStore } from '../stores/langStore';
@@ -197,7 +198,8 @@ async function handleSubmit() {
     <!-- Breadcrumb & Header matching Balsamiq Page 16 -->
     <div class="page-top">
       <router-link to="/tasks" class="btn-back">
-        ‹ {{ langStore.currentLang === 'km' ? 'ត្រឡប់ទៅតារាងការងារ (Back)' : 'Back to Tasks' }}
+        <Icon icon="mdi:arrow-left" width="16" height="16" />
+        <span>{{ langStore.currentLang === 'km' ? 'ត្រឡប់ទៅតារាងការងារ (Back)' : 'Back to Tasks' }}</span>
       </router-link>
       <h1 class="page-heading">
         {{ langStore.currentLang === 'km' ? 'បង្កើតការងារថ្មី' : 'Create New Task' }}
@@ -211,7 +213,8 @@ async function handleSubmit() {
 
     <!-- Error Banner -->
     <div v-if="submitError" class="alert-error">
-      ⚠️ {{ submitError }}
+      <Icon icon="mdi:alert-circle-outline" width="20" height="20" class="alert-icon" />
+      <span>{{ submitError }}</span>
     </div>
 
     <!-- Two-column form layout matching Balsamiq Page 16 -->
@@ -220,7 +223,8 @@ async function handleSubmit() {
       <div class="left-col">
         <div class="card dropzone-card">
           <h3 class="card-title">
-            📎 {{ langStore.currentLang === 'km' ? 'ឯកសារភ្ជាប់ និង គំរូការងារ' : 'Attachments & Specs' }}
+            <Icon icon="mdi:paperclip" width="18" height="18" />
+            <span>{{ langStore.currentLang === 'km' ? 'ឯកសារភ្ជាប់ និង គំរូការងារ' : 'Attachments & Specs' }}</span>
           </h3>
           <p class="card-hint">
             {{ langStore.currentLang === 'km'
@@ -244,7 +248,7 @@ async function handleSubmit() {
               @change="handleFileInput"
             />
             <label for="file-input" class="dropzone-label">
-              <span class="upload-icon">📂</span>
+              <Icon icon="mdi:cloud-upload-outline" width="42" height="42" class="upload-icon" />
               <span class="upload-text">
                 {{ langStore.currentLang === 'km' ? 'ជ្រើសរើសឯកសារភ្ជាប់' : 'Choose files to upload' }}
               </span>
@@ -265,7 +269,10 @@ async function handleSubmit() {
               class="attachment-row"
             >
               <div class="att-info">
-                <span class="att-name">📄 {{ file.name }}</span>
+                <span class="att-name">
+                  <Icon icon="mdi:file-document-outline" width="16" height="16" class="file-icon" />
+                  {{ file.name }}
+                </span>
                 <span class="att-size">({{ file.size }})</span>
               </div>
               <button
@@ -274,7 +281,7 @@ async function handleSubmit() {
                 @click="removeFile(idx)"
                 title="Remove"
               >
-                ✕
+                <Icon icon="mdi:close" width="14" height="14" />
               </button>
             </div>
           </div>
@@ -285,7 +292,8 @@ async function handleSubmit() {
       <div class="right-col">
         <form @submit.prevent="handleSubmit" class="card form-card" novalidate>
           <h3 class="card-title">
-            📝 {{ langStore.currentLang === 'km' ? 'ព័ត៌មានលម្អិតនៃការងារ' : 'Task Details' }}
+            <Icon icon="mdi:file-document-edit-outline" width="18" height="18" />
+            <span>{{ langStore.currentLang === 'km' ? 'ព័ត៌មានលម្អិតនៃការងារ' : 'Task Details' }}</span>
           </h3>
 
           <!-- Title Field -->
@@ -423,7 +431,8 @@ async function handleSubmit() {
               :disabled="isSubmitting"
             >
               <span v-if="isSubmitting" class="spinner-small"></span>
-              <span>{{ langStore.currentLang === 'km' ? '✓ បង្កើតការងារ' : '✓ Create Task' }}</span>
+              <Icon v-else icon="mdi:check" width="16" height="16" />
+              <span>{{ langStore.currentLang === 'km' ? 'បង្កើតការងារ' : 'Create Task' }}</span>
             </button>
           </div>
         </form>
@@ -444,7 +453,9 @@ async function handleSubmit() {
 }
 
 .btn-back {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   color: #3b82f6;
   text-decoration: none;
   font-weight: 500;
@@ -469,6 +480,9 @@ async function handleSubmit() {
 }
 
 .alert-error {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   background: #fef2f2;
   border: 1px solid #fecaca;
   color: #991b1b;
@@ -476,6 +490,10 @@ async function handleSubmit() {
   border-radius: 8px;
   margin-bottom: 1.25rem;
   font-size: 0.92rem;
+}
+
+.alert-icon {
+  flex-shrink: 0;
 }
 
 .create-grid {

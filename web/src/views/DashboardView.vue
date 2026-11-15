@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
 import { useRouter } from 'vue-router';
+import { Icon } from '@iconify/vue';
 import { useTaskStore } from '../stores/taskStore';
 import { useLangStore } from '../stores/langStore';
 
@@ -27,7 +28,8 @@ function goToTasksWithStatus(status: string) {
             {{ langStore.currentLang === 'km' ? 'សង្ខេបការងារ' : 'Work Summary' }}
           </h2>
           <router-link to="/tasks" class="view-all-link">
-            {{ langStore.currentLang === 'km' ? 'ទាំងអស់ >>' : 'View all >>' }}
+            <span>{{ langStore.currentLang === 'km' ? 'ទាំងអស់' : 'View all' }}</span>
+            <Icon icon="mdi:arrow-right" width="14" height="14" />
           </router-link>
         </div>
 
@@ -46,7 +48,9 @@ function goToTasksWithStatus(status: string) {
 
         <!-- Completion Rate Progress Indicator matching Balsamiq Page 5 -->
         <div class="completion-banner">
-          <div class="completion-icon">📈</div>
+          <div class="completion-icon-wrapper">
+            <Icon icon="mdi:chart-line" width="26" height="26" class="completion-icon" />
+          </div>
           <div>
             <div class="completion-label">
               {{ langStore.currentLang === 'km' ? 'អត្រាបញ្ចប់' : 'Completion Rate' }}
@@ -59,45 +63,45 @@ function goToTasksWithStatus(status: string) {
         <div class="status-category-list">
           <div class="status-row" @click="goToTasksWithStatus('TODO')">
             <div class="status-left">
-              <span class="status-icon">📄</span>
+              <Icon icon="mdi:file-document-outline" width="18" height="18" class="status-icon" />
               <span class="status-name">{{ langStore.currentLang === 'km' ? 'ថ្មី (New)' : 'New / Todo' }}</span>
             </div>
             <div class="status-right">
               <span class="status-count">២៥</span>
-              <span class="arrow">›</span>
+              <Icon icon="mdi:chevron-right" width="18" height="18" class="arrow" />
             </div>
           </div>
 
           <div class="status-row" @click="goToTasksWithStatus('IN_PROGRESS')">
             <div class="status-left">
-              <span class="status-icon">🔄</span>
+              <Icon icon="mdi:progress-clock" width="18" height="18" class="status-icon icon-prog" />
               <span class="status-name">{{ langStore.currentLang === 'km' ? 'កំពុងធ្វើ (In Progress)' : 'In Progress' }}</span>
             </div>
             <div class="status-right">
               <span class="status-count">១១</span>
-              <span class="arrow">›</span>
+              <Icon icon="mdi:chevron-right" width="18" height="18" class="arrow" />
             </div>
           </div>
 
           <div class="status-row" @click="goToTasksWithStatus('IN_REVIEW')">
             <div class="status-left">
-              <span class="status-icon">🔍</span>
+              <Icon icon="mdi:file-eye-outline" width="18" height="18" class="status-icon icon-rev" />
               <span class="status-name">{{ langStore.currentLang === 'km' ? 'ស្នើសុំពិនិត្យ (In Review)' : 'Requested Review' }}</span>
             </div>
             <div class="status-right">
               <span class="status-count">៨</span>
-              <span class="arrow">›</span>
+              <Icon icon="mdi:chevron-right" width="18" height="18" class="arrow" />
             </div>
           </div>
 
           <div class="status-row" @click="goToTasksWithStatus('DONE')">
             <div class="status-left">
-              <span class="status-icon">✓</span>
+              <Icon icon="mdi:check-circle-outline" width="18" height="18" class="status-icon icon-done" />
               <span class="status-name">{{ langStore.currentLang === 'km' ? 'បញ្ចប់ (Done)' : 'Completed' }}</span>
             </div>
             <div class="status-right">
               <span class="status-count">៧៣</span>
-              <span class="arrow">›</span>
+              <Icon icon="mdi:chevron-right" width="18" height="18" class="arrow" />
             </div>
           </div>
         </div>
@@ -110,7 +114,8 @@ function goToTasksWithStatus(status: string) {
             {{ langStore.currentLang === 'km' ? 'ការងារចាត់តាំងថ្មី' : 'Newly Assigned Tasks' }}
           </h2>
           <router-link to="/tasks/new" class="btn btn-sm btn-create">
-            + {{ langStore.currentLang === 'km' ? 'បង្កើត' : 'Create' }}
+            <Icon icon="mdi:plus" width="16" height="16" />
+            <span>{{ langStore.currentLang === 'km' ? 'បង្កើត' : 'Create' }}</span>
           </router-link>
         </div>
 
@@ -129,9 +134,15 @@ function goToTasksWithStatus(status: string) {
                 </span>
               </div>
               <div class="task-sub-meta">
-                <span>⏱ {{ task.durationKm || '១ សប្តាហ៍' }}</span>
+                <span class="meta-item">
+                  <Icon icon="mdi:progress-clock" width="14" height="14" />
+                  {{ task.durationKm || '១ សប្តាហ៍' }}
+                </span>
                 <span>·</span>
-                <span>📅 {{ task.dueDate }}</span>
+                <span class="meta-item">
+                  <Icon icon="mdi:calendar-month-outline" width="14" height="14" />
+                  {{ task.dueDate }}
+                </span>
               </div>
             </div>
 
@@ -139,7 +150,7 @@ function goToTasksWithStatus(status: string) {
               <span :class="['pill-status', `pill-${task.status.toLowerCase()}`]">
                 {{ task.status === 'IN_REVIEW' ? 'ស្នើសុំពិនិត្យ' : task.status === 'IN_PROGRESS' ? 'កំពុងធ្វើ' : task.status === 'DONE' ? 'បញ្ចប់' : 'ថ្មី' }}
               </span>
-              <span class="user-avatar-small">👤</span>
+              <Icon icon="mdi:account-circle-outline" width="24" height="24" class="user-avatar-small" />
             </div>
           </div>
         </div>
@@ -184,10 +195,47 @@ function goToTasksWithStatus(status: string) {
 }
 
 .view-all-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
   color: #2563eb;
   font-size: 0.85rem;
   font-weight: 700;
   text-decoration: none;
+}
+
+.view-all-link:hover {
+  text-decoration: underline;
+}
+
+.completion-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  background-color: #eff6ff;
+  border-radius: 8px;
+  color: #2563eb;
+  flex-shrink: 0;
+}
+
+.meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.status-icon.icon-prog {
+  color: #2563eb;
+}
+
+.status-icon.icon-rev {
+  color: #d97706;
+}
+
+.status-icon.icon-done {
+  color: #16a34a;
 }
 
 .total-tasks-block {

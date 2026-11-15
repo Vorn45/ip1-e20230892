@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { Icon } from '@iconify/vue';
+
 defineProps<{
   title: string;
   description: string;
@@ -12,7 +14,7 @@ const emit = defineEmits<{
 
 <template>
   <div class="empty-card">
-    <div class="empty-icon">📁</div>
+    <Icon icon="mdi:folder-outline" width="48" height="48" class="empty-icon" />
     <h3 class="empty-title">{{ title }}</h3>
     <p class="empty-desc">{{ description }}</p>
     <button

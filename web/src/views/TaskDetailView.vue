@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, computed, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+import { Icon } from '@iconify/vue';
 import { useTaskStore } from '../stores/taskStore';
 import { useUserStore } from '../stores/userStore';
 import { useLangStore } from '../stores/langStore';
@@ -89,7 +90,8 @@ async function handleAddComment() {
   <div class="task-detail-page">
     <div class="top-nav-row">
       <button type="button" class="back-link-btn" @click="router.push('/tasks')">
-        ‹ {{ langStore.currentLang === 'km' ? 'ត្រឡប់ទៅតារាងការងារ' : 'Back to Tasks' }}
+        <Icon icon="mdi:arrow-left" width="16" height="16" />
+        <span>{{ langStore.currentLang === 'km' ? 'ត្រឡប់ទៅតារាងការងារ' : 'Back to Tasks' }}</span>
       </button>
       <span class="page-code-tag">{{ taskStore.currentTask?.code || `#${$route.params.id}` }}</span>
     </div>
@@ -112,7 +114,9 @@ async function handleAddComment() {
     <div v-else-if="taskStore.currentTask" class="verification-drawer-card">
       <!-- Feedback Alert -->
       <div v-if="feedbackMsg" :class="['alert', feedbackMsg.type === 'success' ? 'alert-success' : 'alert-danger']">
-        {{ feedbackMsg.text }}
+        <Icon v-if="feedbackMsg.type === 'success'" icon="mdi:check-circle" width="18" height="18" />
+        <Icon v-else icon="mdi:alert-circle-outline" width="18" height="18" />
+        <span>{{ feedbackMsg.text }}</span>
       </div>
 
       <div class="verification-grid">
@@ -120,7 +124,8 @@ async function handleAddComment() {
         <div class="specs-section">
           <div class="specs-header">
             <h2 class="specs-title">
-              {{ langStore.currentLang === 'km' ? 'ផ្ទៀងផ្ទាត់ទិន្នន័យ (Task Verification)' : 'Task Verification' }}
+              <Icon icon="mdi:shield-check" width="22" height="22" class="specs-shield-icon" />
+              <span>{{ langStore.currentLang === 'km' ? 'ផ្ទៀងផ្ទាត់ទិន្នន័យ (Task Verification)' : 'Task Verification' }}</span>
             </h2>
             <span class="code-badge">{{ taskStore.currentTask.code }}</span>
           </div>
@@ -132,25 +137,40 @@ async function handleAddComment() {
 
           <div class="info-list">
             <div class="info-row">
-              <span class="info-key">{{ langStore.currentLang === 'km' ? 'ប្រភេទការងារ' : 'Category' }}:</span>
+              <span class="info-key">
+                <Icon icon="mdi:tag-outline" width="15" height="15" />
+                {{ langStore.currentLang === 'km' ? 'ប្រភេទការងារ' : 'Category' }}:
+              </span>
               <span class="info-val">{{ taskStore.currentTask.categoryKm || taskStore.currentTask.category }}</span>
             </div>
             <div class="info-row">
-              <span class="info-key">{{ langStore.currentLang === 'km' ? 'កម្រិតអាទិភាព' : 'Priority' }}:</span>
+              <span class="info-key">
+                <Icon icon="mdi:flag-outline" width="15" height="15" />
+                {{ langStore.currentLang === 'km' ? 'កម្រិតអាទិភាព' : 'Priority' }}:
+              </span>
               <span :class="['badge', `badge-${taskStore.currentTask.priority.toLowerCase()}`]">
                 {{ taskStore.currentTask.priority }}
               </span>
             </div>
             <div class="info-row">
-              <span class="info-key">{{ langStore.currentLang === 'km' ? 'ស្ថានភាពបច្ចុប្បន្ន' : 'Status' }}:</span>
+              <span class="info-key">
+                <Icon icon="mdi:progress-clock" width="15" height="15" />
+                {{ langStore.currentLang === 'km' ? 'ស្ថានភាពបច្ចុប្បន្ន' : 'Status' }}:
+              </span>
               <span class="badge badge-prog">{{ taskStore.currentTask.status }}</span>
             </div>
             <div class="info-row">
-              <span class="info-key">{{ langStore.currentLang === 'km' ? 'ថ្ងៃផុតកំណត់' : 'Due Date' }}:</span>
+              <span class="info-key">
+                <Icon icon="mdi:calendar-month-outline" width="15" height="15" />
+                {{ langStore.currentLang === 'km' ? 'ថ្ងៃផុតកំណត់' : 'Due Date' }}:
+              </span>
               <span class="info-val">{{ taskStore.currentTask.dueDate }}</span>
             </div>
             <div class="info-row">
-              <span class="info-key">{{ langStore.currentLang === 'km' ? 'អ្នកទទួលខុសត្រូវ' : 'Assignee' }}:</span>
+              <span class="info-key">
+                <Icon icon="mdi:account-outline" width="15" height="15" />
+                {{ langStore.currentLang === 'km' ? 'អ្នកទទួលខុសត្រូវ' : 'Assignee' }}:
+              </span>
               <span class="info-val">{{ taskStore.currentTask.assigneeNameKm || `User #${taskStore.currentTask.assigneeId}` }}</span>
             </div>
           </div>
@@ -158,7 +178,8 @@ async function handleAddComment() {
           <!-- Action Buttons matching Balsamiq Page 17 -->
           <div class="actions-panel">
             <div class="actions-role-indicator">
-              {{ langStore.currentLang === 'km' ? 'សិទ្ធិអនុម័ត:' : 'Approval Actions:' }}
+              <Icon icon="mdi:account-switch-outline" width="16" height="16" />
+              <span>{{ langStore.currentLang === 'km' ? 'សិទ្ធិអនុម័ត:' : 'Approval Actions:' }}</span>
               <strong>{{ userStore.currentUser?.nameKm }} ({{ userStore.currentUser?.role }})</strong>
             </div>
 
@@ -168,7 +189,8 @@ async function handleAddComment() {
                 class="btn btn-changes"
                 @click="handleAction('IN_PROGRESS')"
               >
-                {{ langStore.currentLang === 'km' ? 'ស្នើសុំកែប្រែ / បដិសេធ' : 'Request Changes / Reject' }}
+                <Icon icon="mdi:close-circle-outline" width="16" height="16" />
+                <span>{{ langStore.currentLang === 'km' ? 'ស្នើសុំកែប្រែ / បដិសេធ' : 'Request Changes / Reject' }}</span>
               </button>
 
               <button
@@ -176,7 +198,8 @@ async function handleAddComment() {
                 class="btn btn-approve"
                 @click="handleAction('DONE')"
               >
-                ✓ {{ langStore.currentLang === 'km' ? 'អនុម័តការផ្ទៀងផ្ទាត់' : 'Approve Verification' }}
+                <Icon icon="mdi:check-circle" width="16" height="16" />
+                <span>{{ langStore.currentLang === 'km' ? 'អនុម័តការផ្ទៀងផ្ទាត់' : 'Approve Verification' }}</span>
               </button>
             </div>
           </div>
@@ -185,8 +208,9 @@ async function handleAddComment() {
         <!-- Right: Discussion / Comments Timeline matching Balsamiq Page 18 -->
         <div class="discussion-section">
           <h3 class="discussion-title">
-            {{ langStore.currentLang === 'km' ? 'កត់សម្គាល់ និង មតិយោបល់' : 'Discussion & Notes' }}
-            ({{ taskStore.comments.length }})
+            <Icon icon="mdi:comment-text-outline" width="18" height="18" />
+            <span>{{ langStore.currentLang === 'km' ? 'កត់សម្គាល់ និង មតិយោបល់' : 'Discussion & Notes' }}</span>
+            <span>({{ taskStore.comments.length }})</span>
           </h3>
 
           <div class="discussion-feed">
@@ -196,7 +220,10 @@ async function handleAddComment() {
               class="comment-card"
             >
               <div class="comment-top">
-                <span class="author-name">👤 {{ c.authorNameKm || `User #${c.authorId}` }}</span>
+                <span class="author-name">
+                  <Icon icon="mdi:account-circle-outline" width="16" height="16" />
+                  <span>{{ c.authorNameKm || `User #${c.authorId}` }}</span>
+                </span>
                 <span class="comment-date">
                   {{ new Date(c.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) }}
                 </span>
@@ -214,10 +241,11 @@ async function handleAddComment() {
             />
             <button
               type="submit"
-              class="btn btn-primary"
+              class="btn btn-primary btn-send-comment"
               :disabled="!newComment.trim()"
             >
-              {{ langStore.currentLang === 'km' ? 'ផ្ញើ' : 'Send' }}
+              <Icon icon="mdi:send" width="14" height="14" />
+              <span>{{ langStore.currentLang === 'km' ? 'ផ្ញើ' : 'Send' }}</span>
             </button>
           </form>
         </div>
@@ -241,6 +269,9 @@ async function handleAddComment() {
 }
 
 .back-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   background: none;
   border: 1.5px solid #0f172a;
   border-radius: 0.375rem;
@@ -279,9 +310,16 @@ async function handleAddComment() {
 }
 
 .specs-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   font-size: 1.15rem;
   font-weight: 800;
   color: #0f172a;
+}
+
+.specs-shield-icon {
+  color: #2563eb;
 }
 
 .code-badge {
@@ -320,10 +358,14 @@ async function handleAddComment() {
 .info-row {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-size: 0.875rem;
 }
 
 .info-key {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   color: #64748b;
   font-weight: 600;
 }
@@ -339,6 +381,9 @@ async function handleAddComment() {
 }
 
 .actions-role-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
   font-size: 0.8rem;
   color: #64748b;
   margin-bottom: 0.75rem;
@@ -351,6 +396,10 @@ async function handleAddComment() {
 
 .btn-changes {
   flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
   background: #ffffff;
   border: 1.5px solid #0f172a;
   color: #0f172a;
@@ -362,6 +411,10 @@ async function handleAddComment() {
 
 .btn-approve {
   flex: 1.2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
   background: #0f172a;
   border: 1.5px solid #0f172a;
   color: #ffffff;
@@ -379,10 +432,28 @@ async function handleAddComment() {
 }
 
 .discussion-title {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
   font-size: 1.05rem;
   font-weight: 800;
   color: #0f172a;
   margin-bottom: 1rem;
+}
+
+.author-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: #0f172a;
+}
+
+.btn-send-comment {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
 }
 
 .discussion-feed {

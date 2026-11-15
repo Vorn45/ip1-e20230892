@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
+import { Icon } from '@iconify/vue';
 import { useTaskStore } from '../stores/taskStore';
 import { useLangStore } from '../stores/langStore';
 import LoadingState from '../components/LoadingState.vue';
@@ -72,7 +73,7 @@ function getStatusLabel(status: string) {
         title="Back to Dashboard"
         @click="router.push('/dashboard')"
       >
-        ‹
+        <Icon icon="mdi:chevron-left" width="22" height="22" />
       </button>
 
       <div class="sidebar-menu">
@@ -81,7 +82,8 @@ function getStatusLabel(status: string) {
           :class="['menu-btn', viewMode === 'table' ? 'menu-btn-active' : '']"
           @click="viewMode = 'table'"
         >
-          {{ langStore.currentLang === 'km' ? 'តារាងការងារ' : 'Table View' }}
+          <Icon icon="mdi:table-large" width="18" height="18" />
+          <span>{{ langStore.currentLang === 'km' ? 'តារាងការងារ' : 'Table View' }}</span>
         </button>
 
         <button
@@ -89,7 +91,8 @@ function getStatusLabel(status: string) {
           :class="['menu-btn', viewMode === 'kanban' ? 'menu-btn-active' : '']"
           @click="viewMode = 'kanban'"
         >
-          {{ langStore.currentLang === 'km' ? 'ផ្ទាំងកាត់បាន' : 'Kanban Board' }}
+          <Icon icon="mdi:view-column-outline" width="18" height="18" />
+          <span>{{ langStore.currentLang === 'km' ? 'ផ្ទាំងកាត់បាន' : 'Kanban Board' }}</span>
         </button>
 
         <button
@@ -97,7 +100,8 @@ function getStatusLabel(status: string) {
           class="menu-btn menu-btn-disabled"
           title="Coming soon"
         >
-          {{ langStore.currentLang === 'km' ? 'ប្រតិទិនការងារ' : 'Calendar' }}
+          <Icon icon="mdi:calendar-month-outline" width="18" height="18" />
+          <span>{{ langStore.currentLang === 'km' ? 'ប្រតិទិនការងារ' : 'Calendar' }}</span>
         </button>
       </div>
     </aside>
@@ -107,7 +111,7 @@ function getStatusLabel(status: string) {
       <!-- Top Action Bar matching Balsamiq Page 13 -->
       <div class="tasks-top-bar">
         <div class="search-input-wrap">
-          <span class="search-icon">🔍</span>
+          <Icon icon="mdi:magnify" width="20" height="20" class="search-icon" />
           <input
             :value="taskStore.filterOptions.search"
             type="text"
@@ -119,7 +123,8 @@ function getStatusLabel(status: string) {
 
         <div class="top-bar-right">
           <router-link to="/tasks/new" class="btn btn-create-black">
-            + {{ langStore.currentLang === 'km' ? 'បង្កើតថ្មី' : 'Create New' }}
+            <Icon icon="mdi:plus" width="16" height="16" />
+            <span>{{ langStore.currentLang === 'km' ? 'បង្កើតថ្មី' : 'Create New' }}</span>
           </router-link>
         </div>
       </div>
@@ -213,7 +218,12 @@ function getStatusLabel(status: string) {
                 {{ langStore.currentLang === 'km' ? task.titleKm : task.title }}
               </td>
               <td class="cell-date">{{ task.dueDate }}</td>
-              <td class="cell-comments">💬 {{ task.commentsCount || 0 }}</td>
+              <td class="cell-comments">
+                <span class="cell-comments-inner">
+                  <Icon icon="mdi:comment-text-outline" width="14" height="14" />
+                  <span>{{ task.commentsCount || 0 }}</span>
+                </span>
+              </td>
               <td class="cell-assignee">
                 {{ langStore.currentLang === 'km' ? task.assigneeNameKm : `User #${task.assigneeId}` }}
               </td>
@@ -243,7 +253,7 @@ function getStatusLabel(status: string) {
               :disabled="taskStore.paginatedTasks.page <= 1"
               @click="taskStore.setPage(taskStore.paginatedTasks.page - 1)"
             >
-              ‹
+              <Icon icon="mdi:chevron-left" width="16" height="16" />
             </button>
             <button
               v-for="p in taskStore.paginatedTasks.totalPages"
@@ -260,7 +270,7 @@ function getStatusLabel(status: string) {
               :disabled="taskStore.paginatedTasks.page >= taskStore.paginatedTasks.totalPages"
               @click="taskStore.setPage(taskStore.paginatedTasks.page + 1)"
             >
-              ›
+              <Icon icon="mdi:chevron-right" width="16" height="16" />
             </button>
           </div>
         </div>
@@ -284,11 +294,12 @@ function getStatusLabel(status: string) {
               <h4 class="kcard-title">{{ langStore.currentLang === 'km' ? t.titleKm : t.title }}</h4>
               <div class="kcard-bottom">
                 <span class="kcard-code">{{ t.code }}</span>
-                <span class="kcard-user">👤</span>
+                <Icon icon="mdi:account-outline" width="16" height="16" class="kcard-user" />
               </div>
             </div>
             <router-link to="/tasks/new" class="btn-add-kcard">
-              + {{ langStore.currentLang === 'km' ? 'បង្កើតការងារ' : 'Add Task' }}
+              <Icon icon="mdi:plus" width="14" height="14" />
+              <span>{{ langStore.currentLang === 'km' ? 'បង្កើតការងារ' : 'Add Task' }}</span>
             </router-link>
           </div>
         </div>
@@ -309,7 +320,7 @@ function getStatusLabel(status: string) {
               <h4 class="kcard-title">{{ langStore.currentLang === 'km' ? t.titleKm : t.title }}</h4>
               <div class="kcard-bottom">
                 <span class="kcard-code">{{ t.code }}</span>
-                <span class="kcard-user">👤</span>
+                <Icon icon="mdi:account-outline" width="16" height="16" class="kcard-user" />
               </div>
             </div>
           </div>
@@ -387,6 +398,9 @@ function getStatusLabel(status: string) {
 }
 
 .menu-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   border: 1.5px solid #0f172a;
   border-radius: 0.5rem;
   background-color: #ffffff;
@@ -395,7 +409,7 @@ function getStatusLabel(status: string) {
   font-weight: 700;
   color: #0f172a;
   cursor: pointer;
-  text-align: center;
+  text-align: left;
   transition: all 0.15s ease;
 }
 
@@ -450,6 +464,9 @@ function getStatusLabel(status: string) {
 }
 
 .btn-create-black {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   background-color: #0f172a;
   color: #ffffff;
   border: 1.5px solid #0f172a;
@@ -457,6 +474,14 @@ function getStatusLabel(status: string) {
   font-weight: 700;
   border-radius: 0.5rem;
   text-decoration: none;
+}
+
+.cell-comments-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: #64748b;
+  font-weight: 600;
 }
 
 .filter-pills-row {

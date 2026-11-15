@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { Icon } from '@iconify/vue';
+
 defineProps<{
   title?: string;
   message: string;
@@ -12,7 +14,7 @@ const emit = defineEmits<{
 
 <template>
   <div class="error-banner">
-    <div class="error-icon">⚠</div>
+    <Icon icon="mdi:alert-circle-outline" width="24" height="24" class="error-icon" />
     <div class="error-content">
       <h4 class="error-title">{{ title || 'An error occurred' }}</h4>
       <p class="error-message">{{ message }}</p>
