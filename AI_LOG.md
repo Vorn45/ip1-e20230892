@@ -67,6 +67,15 @@
 
 ---
 
+## 2026-11-15 · Apply Kantumruy Pro Typography
+**Tool:** Antigravity (Gemini)
+**Asked:** Configure Kantumruy Pro as the primary font family for the application
+**Kept:** Installed `@fontsource/kantumruy-pro`, imported font weights (400, 500, 600, 700) in `web/src/main.ts`, updated CSS variable `--font-family` and base element font definitions in `web/src/style.css`, and included Google Fonts fallback preconnect tags in `web/index.html`
+**Rejected:** External-only font loading in favor of offline-bundled fontsource assets for robust local development and CI builds
+**Checked by:** Ran `npm run check` (0 errors), `npm run lint` (0 errors), and `npm run build` (0 errors) with bundled `.woff2` font chunks
+
+---
+
 <!-- Copy this template for each new entry:
 
 ## YYYY-MM-DD · Short description

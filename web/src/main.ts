@@ -1,3 +1,7 @@
+import '@fontsource/kantumruy-pro/index.css';
+import '@fontsource/kantumruy-pro/500.css';
+import '@fontsource/kantumruy-pro/600.css';
+import '@fontsource/kantumruy-pro/700.css';
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 import { setupIcons } from './plugins/icons';
