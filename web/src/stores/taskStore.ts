@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import { ref, computed } from 'vue';
-import type { Task, Comment, TaskStatus, Role, TaskFilterOptions, PaginatedResult } from '../types';
+import type { Task, Comment, TaskStatus, Role, TaskFilterOptions, PaginatedResult, TaskFormData } from '../types';
 import { taskService, commentService } from '../services/api';
 
 export const useTaskStore = defineStore('task', () => {
@@ -65,6 +65,39 @@ export const useTaskStore = defineStore('task', () => {
       paginatedTasks.value = await taskService.getTasks(filterOptions.value);
     } catch (err: unknown) {
       error.value = err instanceof Error ? err.message : 'Failed to fetch tasks';
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  async function fetchTaskById(taskId: number) {
+    isLoading.value = true;
+    error.value = null;
+    try {
+      const task = await taskService.getTaskById(taskId);
+      currentTask.value = task;
+      await fetchTaskComments(taskId);
+      return task;
+    } catch (err: unknown) {
+      error.value = err instanceof Error ? err.message : `Task #${taskId} not found.`;
+      throw err;
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  async function createTask(formData: TaskFormData) {
+    isLoading.value = true;
+    error.value = null;
+    try {
+      const created = await taskService.createTask(formData);
+      projectTasks.value.unshift(created);
+      paginatedTasks.value.data.unshift(created);
+      paginatedTasks.value.totalCount++;
+      return created;
+    } catch (err: unknown) {
+      error.value = err instanceof Error ? err.message : 'Failed to create task';
+      throw err;
     } finally {
       isLoading.value = false;
     }
@@ -160,6 +193,8 @@ export const useTaskStore = defineStore('task', () => {
     tasksByStatus,
     projectProgress,
     fetchTasksForProject,
+    fetchTaskById,
+    createTask,
     fetchExplorerTasks,
     updateTaskStatus,
     fetchTaskComments,

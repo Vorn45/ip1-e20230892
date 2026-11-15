@@ -23,27 +23,27 @@
 ---
 
 ## M1 Frontend Prototype (Week 5)
-- [x] Wireframes (photo or tool) of the main screens in `docs/` (`docs/wireframes/balsamiq_wireframes.pdf` and SVGs in `docs/wireframes/`)
+- [x] Wireframes (photo or tool) of the main screens in `docs/` (`docs/wireframes/balsamiq_wireframes.pdf` and SVGs: `01-projects-dashboard.svg`, `02-project-detail.svg`, `03-create-project-form.svg`, `04-task-explorer.svg`)
 - [x] Vue 3 + TypeScript app created with Vite; strict mode on; ESLint passes
-- [x] At least 4 routes, including a detail page with a route parameter (`/`, `/projects`, `/projects/:id`, `/projects/new`, `/tasks`)
-- [x] At least one form with client-side validation (`CreateProjectView.vue` with real-time validation on title, description, deadline, owner)
-- [x] A Pinia store and a service layer calling a mock API (json-server or local JSON) (`projectStore`, `taskStore`, `userStore`, backed by `services/api.ts` and `public/mock/db.json`)
+- [x] At least 4 routes, including a detail page with a route parameter (`/`, `/dashboard`, `/tasks`, `/tasks/new`, `/tasks/:id`, `/projects`, `/projects/:id`)
+- [x] At least one form with client-side validation (`CreateTaskView.vue` with real-time validation on title, category, priority, due date, assignee, and file attachments dropzone matching Balsamiq Page 16; also `CreateProjectView.vue`)
+- [x] A Pinia store and a service layer calling a mock API (json-server or local JSON) (`taskStore`, `projectStore`, `userStore`, `langStore`, backed by `services/api.ts` with local storage persistence)
 - [x] Loading, empty and error states visible (`LoadingState.vue`, `EmptyState.vue`, `ErrorState.vue` across all views)
 
 ### Explain: What state lives in the store and what stays inside a component? Why?
 **1. What lives in the Pinia store (Shared Application Domain State):**
-- **Domain entity collections & active records:** The list of `projects`, the currently active `currentProject`, `projectTasks`, and `paginatedTasks`. These entities represent shared backend domain data needed across multiple routes (e.g. navigating from `/projects` to `/projects/:id` or exploring `/tasks`).
-- **Session & identity state:** `currentUser` and `users` (including active role `MANAGER` vs `MEMBER`). This identity determines authorization rules (e.g., whether status buttons for approval or work-in-progress are enabled or forbidden) and is needed globally by the navbar, detail inspector, and route views.
-- **Global async status & errors:** Store-level `isLoading` and `error` states for asynchronous operations, ensuring consistent loading indicators and error recovery.
+- **Domain entity collections & active records:** The list of tasks (`projectTasks`, `paginatedTasks`, `currentTask`), project collections, and task verification comments. These represent shared domain records accessed and mutated by multiple routes (e.g. `/dashboard` metrics, `/tasks` list/Kanban, and `/tasks/:id` verification actions).
+- **Session, identity & language state:** `currentUser` and `users` in `userStore` (with active roles `MANAGER` vs `MEMBER` to verify ownership boundaries live), and `currentLang` in `langStore` (`'km'` for Khmer vs `'en'` for English) for bilingual rendering.
+- **Global async status & error recovery:** Store-level `isLoading` and `error` states for asynchronous mock API delays, ensuring uniform loading spinners and network failure banners.
 
 **2. What stays inside a component (Local Ephemeral UI State):**
-- **Form input drafts & touched states:** Reactive objects like `form.title`, `form.description`, `form.deadline` in `CreateProjectView`, and `newCommentText` in `ProjectDetailView`.
-- **Client-side validation errors:** Field-level `touched` flags and computed error strings (`errors.title`, `errors.deadline`).
-- **Ephemeral UI controls:** Active tab selection (`activeTab = 'ALL' | 'TODO' | ...`), local action feedback toast timeouts, modal visibility toggles, and dropdown open/close states.
+- **Form input drafts & touched states:** Reactive fields like `form.title`, `form.category`, `form.dueDate`, `form.assigneeId` in `CreateTaskView.vue`, and `newComment` in `TaskDetailView.vue`.
+- **Client-side validation errors & touched flags:** Ephemeral error messages (`errors.title`, `errors.dueDate`, `submitError`) that evaluate user keystrokes in real time.
+- **Local view toggles & presentation controls:** Dropzone hover states (`isDragging`), view switcher mode (Table vs Kanban view in `TasksView.vue`), filter search inputs, and modal popover open/close states (`showRoleModal` in `HeaderBar.vue`).
 
 **3. Why this separation matters:**
-- **Reactivity performance & clean boundaries:** Storing form input keystrokes or UI toggles in a global store introduces unnecessary global reactivity tracking, excessive action dispatching, and memory bloat. Form state should naturally reset with the component lifecycle when unmounted or canceled.
-- **Single source of truth:** In contrast, keeping projects and tasks in Pinia guarantees that updating a task's status or deleting a project immediately synchronizes everywhere (e.g., updating progress percentages in detail view and reflecting in metrics) without fragile prop-drilling or event-bus spaghetti. This architecture enables swapping the mock service layer for the real NestJS API in Milestone 3 without changing component template logic.
+- **Reactivity performance & clean component lifecycle:** Ephemeral keystrokes, drag-and-drop file states, and modal visibility do not belong in global memory. Storing them inside component scope ensures automatic garbage collection when navigating away, preventing unnecessary global re-renders and memory bloat.
+- **Single source of truth & multi-component synchronization:** In contrast, storing task entities and verification statuses in Pinia ensures that approving a task (`IN_REVIEW` -> `DONE`) immediately updates the completion metric on the Dashboard (`59.35%`), shifts cards on the Kanban board, and appends review comments in the detail view without brittle prop drilling or event buses. This architecture prepares the app for Milestone 3 where mock services are replaced with real NestJS HTTP endpoints.
 
 ---
 

@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 850" width="1200" height="850">
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; }
+      .header-bg { fill: #ffffff; stroke: #e2e8f0; stroke-width: 1; }
+      .card { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.5; rx: 8; }
+      .card-accent { fill: #ffffff; stroke: #3b82f6; stroke-width: 2; rx: 8; }
+      .font-bold { font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; font-weight: 700; }
+      .font-med { font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; font-weight: 600; }
+      .font-reg { font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; font-weight: 400; }
+      .text-dark { fill: #0f172a; }
+      .text-muted { fill: #64748b; }
+      .text-blue { fill: #2563eb; }
+      .badge-todo { fill: #f1f5f9; stroke: #cbd5e1; }
+      .badge-prog { fill: #eff6ff; stroke: #93c5fd; }
+      .badge-rev { fill: #fefce8; stroke: #fde047; }
+      .badge-done { fill: #ecfdf5; stroke: #a7f3d0; }
+      .btn-blue { fill: #3b82f6; rx: 6; }
+      .btn-gray { fill: #f1f5f9; stroke: #cbd5e1; stroke-width: 1; rx: 6; }
+    </style>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="1200" height="850" class="bg"/>
+
+  <!-- Top App Header (Page 5 wireframe) -->
+  <rect x="0" y="0" width="1200" height="110" class="header-bg"/>
+
+  <!-- User Avatar & Profile Info -->
+  <circle cx="65" cy="55" r="30" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2"/>
+  <circle cx="65" cy="46" r="10" fill="#64748b"/>
+  <path d="M48 68 C50 56, 80 56, 82 68 Z" fill="#64748b"/>
+
+  <text x="110" y="44" class="font-bold text-dark" font-size="18px">ពិសិដ្ឋ បញ្ញាវុឌ្ឍ (Piseth Panhavorn)</text>
+  <text x="110" y="64" class="font-med text-blue" font-size="13px">ប្រធានផ្នែកអភិវឌ្ឍន៍ (Team Lead / Project Manager)</text>
+  <text x="110" y="82" class="font-reg text-muted" font-size="12px">📞 012 345 678 · piseth.lead@planflow.kh</text>
+
+  <!-- Right Header Controls -->
+  <g transform="translate(860, 35)">
+    <rect width="110" height="36" class="btn-gray"/>
+    <text x="55" y="23" class="font-med text-dark" font-size="13px" text-anchor="middle">🌐 ខ្មែរ / EN</text>
+  </g>
+  <g transform="translate(980, 35)">
+    <rect width="130" height="36" class="btn-gray"/>
+    <text x="65" y="23" class="font-med text-dark" font-size="13px" text-anchor="middle">តួនាទី (Switch Role)</text>
+  </g>
+  <g transform="translate(1120, 35)">
+    <circle cx="18" cy="18" r="18" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="18" y="24" class="font-bold text-dark" font-size="14px" text-anchor="middle">🔔</text>
+  </g>
+
+  <!-- Navigation Bar Tabs (Dashboard / Tasks / New Task) -->
+  <rect x="0" y="110" width="1200" height="45" fill="#f1f5f9" stroke="#e2e8f0"/>
+  <rect x="40" y="110" width="170" height="45" fill="#ffffff" stroke="#3b82f6" stroke-width="0 0 3 0"/>
+  <text x="125" y="138" class="font-bold text-blue" font-size="14px" text-anchor="middle">ផ្ទាំងព័ត៌មាន (Dashboard)</text>
+
+  <text x="280" y="138" class="font-med text-dark" font-size="14px">ការងារ (Tasks Explorer)</text>
+  <text x="430" y="138" class="font-med text-muted" font-size="14px">គម្រោង (Projects)</text>
+
+  <g transform="translate(1010, 116)">
+    <rect width="150" height="32" class="btn-blue"/>
+    <text x="75" y="21" class="font-bold font-med" fill="#ffffff" font-size="13px" text-anchor="middle">+ បង្កើតការងារថ្មី</text>
+  </g>
+
+  <!-- Main Content Title -->
+  <text x="40" y="195" class="font-bold text-dark" font-size="22px">សង្ខេបការងារ (Work Summary Overview)</text>
+  <text x="40" y="218" class="font-reg text-muted" font-size="14px">ទិន្នន័យវឌ្ឍនភាពការងារសរុប និង ភារកិច្ចដែលបានចាត់តាំង</text>
+
+  <!-- Top Metric Cards Grid (Balsamiq Page 5) -->
+  <!-- Total Card -->
+  <rect x="40" y="240" width="215" height="100" class="card"/>
+  <text x="60" y="270" class="font-med text-muted" font-size="13px">ការងារសរុប (Total Tasks)</text>
+  <text x="60" y="315" class="font-bold text-dark" font-size="34px">១២៣</text>
+  <text x="135" y="315" class="font-med text-muted" font-size="16px">(123)</text>
+
+  <!-- TODO Card -->
+  <rect x="270" y="240" width="215" height="100" class="card"/>
+  <text x="290" y="270" class="font-med text-muted" font-size="13px">ការងារថ្មី (Todo / New)</text>
+  <text x="290" y="315" class="font-bold text-dark" font-size="34px">១៨</text>
+  <text x="345" y="315" class="font-med text-muted" font-size="16px">(18)</text>
+
+  <!-- In Progress Card -->
+  <rect x="500" y="240" width="215" height="100" class="card"/>
+  <text x="520" y="270" class="font-med text-muted" font-size="13px">កំពុងដំណើរការ (In Progress)</text>
+  <text x="520" y="315" class="font-bold text-blue" font-size="34px">៣២</text>
+  <text x="580" y="315" class="font-med text-muted" font-size="16px">(32)</text>
+
+  <!-- In Review Card -->
+  <rect x="730" y="240" width="215" height="100" class="card"/>
+  <text x="750" y="270" class="font-med text-muted" font-size="13px">រង់ចាំពិនិត្យ (In Review)</text>
+  <text x="750" y="315" class="font-bold text-dark" font-size="34px" fill="#d97706">១៦</text>
+  <text x="805" y="315" class="font-med text-muted" font-size="16px">(16)</text>
+
+  <!-- Completed Card -->
+  <rect x="960" y="240" width="200" height="100" class="card"/>
+  <text x="980" y="270" class="font-med text-muted" font-size="13px">បានបញ្ចប់ (Completed)</text>
+  <text x="980" y="315" class="font-bold text-dark" font-size="34px" fill="#16a34a">៥៧</text>
+  <text x="1035" y="315" class="font-med text-muted" font-size="16px">(57)</text>
+
+  <!-- Overall Progress Banner (59.35% completion rate matching Balsamiq Page 5) -->
+  <rect x="40" y="360" width="1120" height="80" class="card-accent" fill="#eff6ff"/>
+  <text x="65" y="395" class="font-bold text-dark" font-size="16px">អត្រាការងារសម្រេចជារួម (Overall Completion Progress)</text>
+  <text x="1070" y="395" class="font-bold text-blue" font-size="20px" text-anchor="end">59.35%</text>
+  <rect x="65" y="410" width="1070" height="14" rx="7" fill="#cbd5e1"/>
+  <rect x="65" y="410" width="635" height="14" rx="7" fill="#3b82f6"/>
+
+  <!-- Section: Newly Assigned Tasks (Balsamiq Page 5) -->
+  <text x="40" y="480" class="font-bold text-dark" font-size="18px">ការងារដែលបានចាត់តាំងថ្មីៗ (Newly Assigned Tasks)</text>
+  <text x="1080" y="480" class="font-med text-blue" font-size="14px">មើលទាំងអស់ (View All) →</text>
+
+  <!-- Task Card 1 -->
+  <rect x="40" y="505" width="545" height="150" class="card"/>
+  <text x="65" y="538" class="font-bold text-blue" font-size="14px">#000b-005 (CCN-024800)</text>
+  <rect x="465" y="522" width="100" height="22" rx="4" class="badge-rev"/>
+  <text x="515" y="537" class="font-med" fill="#854d0e" font-size="11px" text-anchor="middle">រង់ចាំពិនិត្យ</text>
+  <text x="65" y="565" class="font-bold text-dark" font-size="16px">ផ្ទៀងផ្ទាត់ទិន្នន័យការងារ និង សេចក្តីលម្អិត</text>
+  <text x="65" y="590" class="font-reg text-muted" font-size="13px">ប្រភេទ: Frontend UI / UX · អាទិភាព: ខ្ពស់ (HIGH)</text>
+  <text x="65" y="630" class="font-reg text-muted" font-size="12px">👤 អ្នកទទួល: ពិសិដ្ឋ បញ្ញាវុឌ្ឍ · 📅 2026-11-20</text>
+  <rect x="460" y="608" width="105" height="32" class="btn-gray"/>
+  <text x="512" y="628" class="font-med text-dark" font-size="12px" text-anchor="middle">ពិនិត្យលម្អិត →</text>
+
+  <!-- Task Card 2 -->
+  <rect x="615" y="505" width="545" height="150" class="card"/>
+  <text x="640" y="538" class="font-bold text-blue" font-size="14px">#000b-004</text>
+  <rect x="1040" y="522" width="100" height="22" rx="4" class="badge-prog"/>
+  <text x="1090" y="537" class="font-med text-blue" font-size="11px" text-anchor="middle">កំពុងដំណើរការ</text>
+  <text x="640" y="565" class="font-bold text-dark" font-size="16px">រៀបចំ API Endpoint សម្រាប់ Task Verification</text>
+  <text x="640" y="590" class="font-reg text-muted" font-size="13px">ប្រភេទ: Backend API · អាទិភាព: មធ្យម (MEDIUM)</text>
+  <text x="640" y="630" class="font-reg text-muted" font-size="12px">👤 អ្នកទទួល: Alex Mercer · 📅 2026-11-22</text>
+  <rect x="1035" y="608" width="105" height="32" class="btn-gray"/>
+  <text x="1087" y="628" class="font-med text-dark" font-size="12px" text-anchor="middle">ពិនិត្យលម្អិត →</text>
+
+  <!-- Task Card 3 -->
+  <rect x="40" y="670" width="545" height="150" class="card"/>
+  <text x="65" y="703" class="font-bold text-blue" font-size="14px">#000b-003</text>
+  <rect x="465" y="687" width="100" height="22" rx="4" class="badge-todo"/>
+  <text x="515" y="702" class="font-med text-muted" font-size="11px" text-anchor="middle">ការងារថ្មី</text>
+  <text x="65" y="730" class="font-bold text-dark" font-size="16px">សរសេរឯកសារស្ថាបត្យកម្មប្រព័ន្ធ (Architecture Docs)</text>
+  <text x="65" y="755" class="font-reg text-muted" font-size="13px">ប្រភេទ: Documentation · អាទិភាព: ទាប (LOW)</text>
+  <text x="65" y="795" class="font-reg text-muted" font-size="12px">👤 អ្នកទទួល: សុភា គីម · 📅 2026-11-25</text>
+  <rect x="460" y="773" width="105" height="32" class="btn-gray"/>
+  <text x="512" y="793" class="font-med text-dark" font-size="12px" text-anchor="middle">ពិនិត្យលម្អិត →</text>
+
+  <!-- Task Card 4 -->
+  <rect x="615" y="670" width="545" height="150" class="card"/>
+  <text x="640" y="703" class="font-bold text-blue" font-size="14px">#000b-002</text>
+  <rect x="1040" y="687" width="100" height="22" rx="4" class="badge-done"/>
+  <text x="1090" y="702" class="font-med" fill="#166534" font-size="11px" text-anchor="middle">បានបញ្ចប់</text>
+  <text x="640" y="730" class="font-bold text-dark" font-size="16px">រៀបចំរចនាសម្ព័ន្ធគម្រោង Vue 3 + TypeScript Vite</text>
+  <text x="640" y="755" class="font-reg text-muted" font-size="13px">ប្រភេទ: Frontend Setup · អាទិភាព: ខ្ពស់ (HIGH)</text>
+  <text x="640" y="795" class="font-reg text-muted" font-size="12px">👤 អ្នកទទួល: ពិសិដ្ឋ បញ្ញាវុឌ្ឍ · 📅 2026-11-14</text>
+  <rect x="1035" y="773" width="105" height="32" class="btn-gray"/>
+  <text x="1087" y="793" class="font-med text-dark" font-size="12px" text-anchor="middle">ពិនិត្យលម្អិត →</text>
+</svg>

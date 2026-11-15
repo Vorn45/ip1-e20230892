@@ -49,6 +49,15 @@
 
 ---
 
+## 2026-11-15 · Align Prototype Views & Wireframes to Balsamiq Design (4 Core Screens)
+**Tool:** Antigravity (Gemini)
+**Asked:** Align running frontend views and docs/wireframes to match the user's authentic Balsamiq wireframes for the 4 core Milestone 1 prototype screens without implementing all 18 pages ("yes but not yet to do all page")
+**Kept:** Work Summary Dashboard view (`DashboardView.vue` matching Page 5 with bilingual metrics, completion rate, newly assigned cards), Tasks Explorer (`TasksView.vue` matching Page 13 & 14 with Table and Kanban board toggle), Create Task Form (`CreateTaskView.vue` matching Page 16 with client-side validation and drag-and-drop file attachment dropzone), Task Verification & Detail view (`TaskDetailView.vue` matching Page 17 & 18 with approval actions and comments discussion feed), `HeaderBar.vue` with bilingual toggle (`langStore`) and user persona switcher modal (Page 11), four vector SVG wireframes in `docs/wireframes/` (`01-projects-dashboard.svg`, `02-project-detail.svg`, `03-create-project-form.svg`, `04-task-explorer.svg`), and updated `docs/wireframes/README.md`
+**Rejected:** Full 18-page implementation (deferred complex QR login, multi-device 2FA management, and organizational hierarchy trees to future milestones)
+**Checked by:** Ran `npm run check` (0 errors), `npm run lint` (0 errors), and `npm run build` (0 errors) successfully in `web/`
+
+---
+
 <!-- Copy this template for each new entry:
 
 ## YYYY-MM-DD · Short description

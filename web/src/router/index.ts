@@ -4,13 +4,38 @@ import type { RouteRecordRaw } from 'vue-router';
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
-    redirect: '/projects'
+    redirect: '/dashboard'
+  },
+  {
+    path: '/dashboard',
+    name: 'dashboard',
+    component: () => import('../views/DashboardView.vue'),
+    meta: { title: 'Dashboard (ផ្ទាំងព័ត៌មាន) - PlanFlow' }
+  },
+  {
+    path: '/tasks',
+    name: 'tasks-list',
+    component: () => import('../views/TasksView.vue'),
+    meta: { title: 'Tasks Explorer (បញ្ជីការងារ) - PlanFlow' }
+  },
+  {
+    path: '/tasks/new',
+    name: 'task-create',
+    component: () => import('../views/CreateTaskView.vue'),
+    meta: { title: 'Create Task (បង្កើតការងារថ្មី) - PlanFlow' }
+  },
+  {
+    path: '/tasks/:id',
+    name: 'task-detail',
+    component: () => import('../views/TaskDetailView.vue'),
+    props: true,
+    meta: { title: 'Task Verification & Detail (ផ្ទៀងផ្ទាត់ទិន្នន័យការងារ) - PlanFlow' }
   },
   {
     path: '/projects',
     name: 'projects-list',
     component: () => import('../views/ProjectsView.vue'),
-    meta: { title: 'Projects Dashboard - PlanFlow' }
+    meta: { title: 'Projects Overview - PlanFlow' }
   },
   {
     path: '/projects/new',
@@ -24,12 +49,6 @@ const routes: RouteRecordRaw[] = [
     component: () => import('../views/ProjectDetailView.vue'),
     props: true,
     meta: { title: 'Project Details - PlanFlow' }
-  },
-  {
-    path: '/tasks',
-    name: 'task-explorer',
-    component: () => import('../views/TaskExplorerView.vue'),
-    meta: { title: 'Task Explorer - PlanFlow' }
   },
   {
     path: '/:pathMatch(.*)*',

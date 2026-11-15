@@ -1,0 +1,165 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 850" width="1200" height="850">
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; }
+      .header-bg { fill: #ffffff; stroke: #e2e8f0; stroke-width: 1; }
+      .sidebar-bg { fill: #ffffff; stroke: #e2e8f0; stroke-width: 1; }
+      .card { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.5; rx: 8; }
+      .font-bold { font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; font-weight: 700; }
+      .font-med { font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; font-weight: 600; }
+      .font-reg { font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; font-weight: 400; }
+      .text-dark { fill: #0f172a; }
+      .text-muted { fill: #64748b; }
+      .text-blue { fill: #2563eb; }
+      .input-box { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.5; rx: 6; }
+      .btn-blue { fill: #3b82f6; rx: 6; }
+      .btn-gray { fill: #f1f5f9; stroke: #cbd5e1; stroke-width: 1; rx: 6; }
+      .th { fill: #f8fafc; font-family: ui-sans-serif, system-ui, sans-serif; font-size: 12px; font-weight: 600; color: #475569; }
+      .badge-prog { fill: #eff6ff; stroke: #93c5fd; rx: 4; }
+      .badge-rev { fill: #fefce8; stroke: #fde047; rx: 4; }
+      .badge-done { fill: #ecfdf5; stroke: #a7f3d0; rx: 4; }
+      .badge-todo { fill: #f1f5f9; stroke: #cbd5e1; rx: 4; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="850" class="bg"/>
+
+  <!-- Top App Header -->
+  <rect x="0" y="0" width="1200" height="70" class="header-bg"/>
+  <text x="40" y="42" class="font-bold text-dark" font-size="18px">PlanFlow · តារាងការងារ (Tasks Explorer)</text>
+  <text x="1000" y="42" class="font-med text-muted" font-size="13px">Balsamiq Page 13 &amp; 14</text>
+
+  <!-- App Layout: Left Sidebar + Main Explorer -->
+  <!-- Left Sidebar (Balsamiq Page 13 sidebar navigation) -->
+  <rect x="0" y="70" width="220" height="780" class="sidebar-bg"/>
+
+  <text x="25" y="110" class="font-bold text-muted" font-size="11px">ទិដ្ឋភាពការងារ (VIEWS)</text>
+
+  <!-- View 1: Table List (Active) -->
+  <rect x="15" y="125" width="190" height="38" rx="6" fill="#eff6ff"/>
+  <text x="35" y="149" class="font-bold text-blue" font-size="13px">📋 តារាងការងារ (Table)</text>
+
+  <!-- View 2: Kanban Board -->
+  <rect x="15" y="170" width="190" height="38" rx="6" fill="transparent"/>
+  <text x="35" y="194" class="font-med text-dark" font-size="13px">🗂️ ផ្ទាំងកាត់បាន (Kanban)</text>
+
+  <!-- View 3: Calendar -->
+  <rect x="15" y="215" width="190" height="38" rx="6" fill="transparent"/>
+  <text x="35" y="239" class="font-med text-muted" font-size="13px">📅 ប្រតិទិន (Calendar)</text>
+
+  <line x1="20" y1="270" x2="200" y2="270" stroke="#f1f5f9"/>
+
+  <text x="25" y="300" class="font-bold text-muted" font-size="11px">ស្ថានភាព (STATUS FILTER)</text>
+  <text x="35" y="330" class="font-med text-dark" font-size="13px">● ទាំងអស់ (All)</text>
+  <text x="35" y="360" class="font-reg text-muted" font-size="13px">○ ការងារថ្មី (Todo)</text>
+  <text x="35" y="390" class="font-reg text-muted" font-size="13px">○ កំពុងធ្វើ (In Progress)</text>
+  <text x="35" y="420" class="font-reg text-muted" font-size="13px">○ រង់ចាំពិនិត្យ (In Review)</text>
+  <text x="35" y="450" class="font-reg text-muted" font-size="13px">○ បានបញ្ចប់ (Done)</text>
+
+  <!-- Right Main Area: Search, Table, and Pagination -->
+  <g transform="translate(240, 85)">
+    <!-- Header Row -->
+    <text x="0" y="30" class="font-bold text-dark" font-size="22px">តារាងការងារសរុប (All Team Tasks)</text>
+    <text x="0" y="52" class="font-reg text-muted" font-size="13px">
+      ស្វែងរក ចម្រាញ់ និងគ្រប់គ្រងការងារឆ្លងគម្រោង (Stretch Feature: Multi-filter &amp; Pagination)
+    </text>
+
+    <!-- Search Box and New Task Button -->
+    <rect x="0" y="70" width="600" height="42" class="input-box"/>
+    <text x="20" y="97" class="font-reg text-muted" font-size="13px">🔍 ស្វែងរកតាមលេខកូដ (#000b-005) ឬ ចំណងជើង...</text>
+
+    <g transform="translate(775, 70)">
+      <rect width="150" height="42" class="btn-blue"/>
+      <text x="75" y="26" class="font-bold" fill="#ffffff" font-size="13px" text-anchor="middle">+ បង្កើតការងារថ្មី</text>
+    </g>
+
+    <!-- Table Container -->
+    <rect x="0" y="130" width="925" height="520" class="card"/>
+
+    <!-- Table Header Row -->
+    <rect x="0" y="130" width="925" height="44" rx="8 8 0 0" fill="#f8fafc" stroke="#cbd5e1" stroke-width="0 0 1 0"/>
+    <text x="25" y="157" class="font-bold text-muted" font-size="12px">លេខកូដ (CODE)</text>
+    <text x="140" y="157" class="font-bold text-muted" font-size="12px">ចំណងជើងការងារ (TASK TITLE)</text>
+    <text x="440" y="157" class="font-bold text-muted" font-size="12px">ប្រភេទ (CATEGORY)</text>
+    <text x="610" y="157" class="font-bold text-muted" font-size="12px">អាទិភាព (PRIORITY)</text>
+    <text x="715" y="157" class="font-bold text-muted" font-size="12px">ស្ថានភាព (STATUS)</text>
+    <text x="830" y="157" class="font-bold text-muted" font-size="12px">សកម្មភាព</text>
+
+    <!-- Row 1 -->
+    <line x1="0" y1="230" x2="925" y2="230" stroke="#f1f5f9"/>
+    <text x="25" y="200" class="font-bold text-blue" font-size="13px">#000b-005</text>
+    <text x="25" y="218" class="font-reg text-muted" font-size="11px">CCN-024800</text>
+    <text x="140" y="202" class="font-bold text-dark" font-size="13px">ផ្ទៀងផ្ទាត់ទិន្នន័យការងារ និង សេចក្តីលម្អិត</text>
+    <text x="140" y="220" class="font-reg text-muted" font-size="11px">💬 3 comments · 👤 ពិសិដ្ឋ បញ្ញាវុឌ្ឍ</text>
+    <text x="440" y="208" class="font-reg text-dark" font-size="12px">Frontend UI/UX</text>
+    <text x="610" y="208" class="font-bold" fill="#ef4444" font-size="12px">HIGH</text>
+    <rect x="715" y="192" width="90" height="24" class="badge-rev"/>
+    <text x="760" y="208" class="font-bold" fill="#854d0e" font-size="11px" text-anchor="middle">IN_REVIEW</text>
+    <rect x="830" y="190" width="75" height="28" class="btn-gray"/>
+    <text x="867" y="208" class="font-med text-dark" font-size="11px" text-anchor="middle">ពិនិត្យ →</text>
+
+    <!-- Row 2 -->
+    <line x1="0" y1="300" x2="925" y2="300" stroke="#f1f5f9"/>
+    <text x="25" y="265" class="font-bold text-blue" font-size="13px">#000b-004</text>
+    <text x="140" y="267" class="font-bold text-dark" font-size="13px">រៀបចំ API Endpoint សម្រាប់ Task Verification</text>
+    <text x="140" y="285" class="font-reg text-muted" font-size="11px">💬 1 comment · 👤 Alex Mercer</text>
+    <text x="440" y="273" class="font-reg text-dark" font-size="12px">Backend API</text>
+    <text x="610" y="273" class="font-bold" fill="#f59e0b" font-size="12px">MEDIUM</text>
+    <rect x="715" y="257" width="90" height="24" class="badge-prog"/>
+    <text x="760" y="273" class="font-bold text-blue" font-size="11px" text-anchor="middle">IN_PROGRESS</text>
+    <rect x="830" y="255" width="75" height="28" class="btn-gray"/>
+    <text x="867" y="273" class="font-med text-dark" font-size="11px" text-anchor="middle">ពិនិត្យ →</text>
+
+    <!-- Row 3 -->
+    <line x1="0" y1="370" x2="925" y2="370" stroke="#f1f5f9"/>
+    <text x="25" y="335" class="font-bold text-blue" font-size="13px">#000b-003</text>
+    <text x="140" y="337" class="font-bold text-dark" font-size="13px">សរសេរឯកសារស្ថាបត្យកម្មប្រព័ន្ធ (Architecture Docs)</text>
+    <text x="140" y="355" class="font-reg text-muted" font-size="11px">💬 0 comments · 👤 សុភា គីម</text>
+    <text x="440" y="343" class="font-reg text-dark" font-size="12px">Documentation</text>
+    <text x="610" y="343" class="font-bold" fill="#10b981" font-size="12px">LOW</text>
+    <rect x="715" y="327" width="90" height="24" class="badge-todo"/>
+    <text x="760" y="343" class="font-bold text-muted" font-size="11px" text-anchor="middle">TODO</text>
+    <rect x="830" y="325" width="75" height="28" class="btn-gray"/>
+    <text x="867" y="343" class="font-med text-dark" font-size="11px" text-anchor="middle">ពិនិត្យ →</text>
+
+    <!-- Row 4 -->
+    <line x1="0" y1="440" x2="925" y2="440" stroke="#f1f5f9"/>
+    <text x="25" y="405" class="font-bold text-blue" font-size="13px">#000b-002</text>
+    <text x="140" y="407" class="font-bold text-dark" font-size="13px">រៀបចំរចនាសម្ព័ន្ធគម្រោង Vue 3 + TypeScript</text>
+    <text x="140" y="425" class="font-reg text-muted" font-size="11px">💬 2 comments · 👤 ពិសិដ្ឋ បញ្ញាវុឌ្ឍ</text>
+    <text x="440" y="413" class="font-reg text-dark" font-size="12px">Frontend Setup</text>
+    <text x="610" y="413" class="font-bold" fill="#ef4444" font-size="12px">HIGH</text>
+    <rect x="715" y="397" width="90" height="24" class="badge-done"/>
+    <text x="760" y="413" class="font-bold" fill="#166534" font-size="11px" text-anchor="middle">DONE</text>
+    <rect x="830" y="395" width="75" height="28" class="btn-gray"/>
+    <text x="867" y="413" class="font-med text-dark" font-size="11px" text-anchor="middle">ពិនិត្យ →</text>
+
+    <!-- Row 5 -->
+    <line x1="0" y1="510" x2="925" y2="510" stroke="#f1f5f9"/>
+    <text x="25" y="475" class="font-bold text-blue" font-size="13px">#000b-001</text>
+    <text x="140" y="477" class="font-bold text-dark" font-size="13px">កំណត់កិច្ចការ និង Scope Milestone 0 &amp; M1</text>
+    <text x="140" y="495" class="font-reg text-muted" font-size="11px">💬 5 comments · 👤 ពិសិដ្ឋ បញ្ញាវុឌ្ឍ</text>
+    <text x="440" y="483" class="font-reg text-dark" font-size="12px">Planning</text>
+    <text x="610" y="483" class="font-bold" fill="#f59e0b" font-size="12px">MEDIUM</text>
+    <rect x="715" y="467" width="90" height="24" class="badge-done"/>
+    <text x="760" y="483" class="font-bold" fill="#166534" font-size="11px" text-anchor="middle">DONE</text>
+    <rect x="830" y="465" width="75" height="28" class="btn-gray"/>
+    <text x="867" y="483" class="font-med text-dark" font-size="11px" text-anchor="middle">ពិនិត្យ →</text>
+
+    <!-- Pagination Footer Controls (Balsamiq Page 13 footer) -->
+    <rect x="0" y="580" width="925" height="70" rx="0 0 8 8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1 0 0 0"/>
+    <text x="25" y="622" class="font-reg text-muted" font-size="13px">បង្ហាញ 1 ដល់ 5 នៃ 5 ការងារសរុប (ទំព័រ 1 នៃ 1)</text>
+
+    <g transform="translate(740, 602)">
+      <rect width="36" height="34" class="btn-gray"/>
+      <text x="18" y="22" class="font-bold text-muted" font-size="14px" text-anchor="middle">‹</text>
+
+      <rect x="42" y="0" width="36" height="34" class="btn-blue"/>
+      <text x="60" y="22" class="font-bold" fill="#ffffff" font-size="13px" text-anchor="middle">1</text>
+
+      <rect x="84" y="0" width="36" height="34" class="btn-gray"/>
+      <text x="102" y="22" class="font-bold text-muted" font-size="14px" text-anchor="middle">›</text>
+    </g>
+  </g>
+</svg>

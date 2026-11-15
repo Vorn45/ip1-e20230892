@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 850" width="1200" height="850">
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; }
+      .header-bg { fill: #ffffff; stroke: #e2e8f0; stroke-width: 1; }
+      .card { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.5; rx: 8; }
+      .font-bold { font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; font-weight: 700; }
+      .font-med { font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; font-weight: 600; }
+      .font-reg { font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; font-weight: 400; }
+      .text-dark { fill: #0f172a; }
+      .text-muted { fill: #64748b; }
+      .text-blue { fill: #2563eb; }
+      .text-red { fill: #ef4444; }
+      .input-box { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.5; rx: 6; }
+      .input-error { fill: #fffbfb; stroke: #ef4444; stroke-width: 1.5; rx: 6; }
+      .dropzone { fill: #f8fafc; stroke: #94a3b8; stroke-width: 2; stroke-dasharray: 6 4; rx: 8; }
+      .btn-cancel { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1; rx: 6; }
+      .btn-submit { fill: #3b82f6; rx: 6; }
+      .pill-active { fill: #eff6ff; stroke: #3b82f6; stroke-width: 2; rx: 6; }
+      .pill-normal { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 1; rx: 6; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="850" class="bg"/>
+
+  <!-- Top App Header -->
+  <rect x="0" y="0" width="1200" height="70" class="header-bg"/>
+  <text x="40" y="42" class="font-bold text-dark" font-size="18px">PlanFlow · បង្កើតការងារថ្មី (Balsamiq Page 16)</text>
+  <text x="1000" y="42" class="font-med text-muted" font-size="13px">Client-side Validation</text>
+
+  <!-- Page Top -->
+  <text x="40" y="105" class="font-med text-blue" font-size="13px">‹ ត្រឡប់ទៅតារាងការងារ (Back to Tasks)</text>
+  <text x="40" y="135" class="font-bold text-dark" font-size="22px">បង្កើតការងារថ្មី (Create New Task)</text>
+  <text x="40" y="158" class="font-reg text-muted" font-size="13px">
+    បំពេញព័ត៌មានខាងក្រោម និងភ្ជាប់ឯកសារពិពណ៌នា ដើម្បីចាត់ចែងការងារក្នុងក្រុម
+  </text>
+
+  <!-- Two-Column Grid matching Balsamiq Page 16 -->
+  <!-- Left Column: File Dropzone (Attachment Area) -->
+  <rect x="40" y="180" width="380" height="620" class="card"/>
+  <text x="65" y="215" class="font-bold text-dark" font-size="16px">📎 ឯកសារភ្ជាប់ និង គំរូការងារ</text>
+  <text x="65" y="238" class="font-reg text-muted" font-size="12px">
+    ទាញទម្លាក់ឯកសារ ឬ ចុចជ្រើសរើស (PNG, JPG, PDF max 2MB)
+  </text>
+
+  <!-- Drag-and-drop zone -->
+  <rect x="65" y="260" width="330" height="180" class="dropzone"/>
+  <text x="230" y="325" class="font-bold" font-size="32px" text-anchor="middle">📂</text>
+  <text x="230" y="360" class="font-bold text-dark" font-size="14px" text-anchor="middle">ជ្រើសរើសឯកសារភ្ជាប់</text>
+  <text x="230" y="385" class="font-reg text-muted" font-size="12px" text-anchor="middle">ឬ ទាញទម្លាក់ឯកសារមកទីនេះ</text>
+
+  <!-- Uploaded files list preview -->
+  <text x="65" y="475" class="font-bold text-dark" font-size="13px">ឯកសារដែលបានភ្ជាប់រួច:</text>
+
+  <rect x="65" y="495" width="330" height="42" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="80" y="522" class="font-reg text-dark" font-size="12px">📄 task_specification_v1.pdf (320 KB)</text>
+  <text x="375" y="522" class="font-bold text-red" font-size="14px">✕</text>
+
+  <rect x="65" y="545" width="330" height="42" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="80" y="572" class="font-reg text-dark" font-size="12px">🖼️ mockup_dashboard_ui.png (1.2 MB)</text>
+  <text x="375" y="572" class="font-bold text-red" font-size="14px">✕</text>
+
+  <!-- Right Column: Task Form (Validation Fields) -->
+  <rect x="445" y="180" width="715" height="620" class="card"/>
+  <text x="475" y="215" class="font-bold text-dark" font-size="16px">📝 ព័ត៌មានលម្អិតនៃការងារ (Task Details)</text>
+
+  <!-- Field 1: Title -->
+  <text x="475" y="255" class="font-bold text-dark" font-size="13px">ចំណងជើងការងារ (Task Title) *</text>
+  <rect x="475" y="268" width="655" height="40" class="input-box"/>
+  <text x="490" y="293" class="font-reg text-dark" font-size="13px">អនុវត្តផ្ទាំងផ្ទៀងផ្ទាត់ទិន្នន័យ (Task Verification UI)</text>
+
+  <!-- Field 2 & 3: Category & Priority Row -->
+  <g transform="translate(475, 330)">
+    <!-- Category -->
+    <text x="0" y="0" class="font-bold text-dark" font-size="13px">ប្រភេទការងារ (Category) *</text>
+    <rect x="0" y="12" width="310" height="40" class="input-box"/>
+    <text x="15" y="37" class="font-reg text-dark" font-size="13px">ការអភិវឌ្ឍ Frontend (Vue 3 / TS) ▾</text>
+
+    <!-- Priority -->
+    <text x="345" y="0" class="font-bold text-dark" font-size="13px">កម្រិតអាទិភាព (Priority) *</text>
+    <g transform="translate(345, 12)">
+      <rect x="0" y="0" width="65" height="38" class="pill-normal"/>
+      <text x="32" y="24" class="font-reg text-muted" font-size="11px" text-anchor="middle">ទាប</text>
+
+      <rect x="75" y="0" width="75" height="38" class="pill-active"/>
+      <text x="112" y="24" class="font-bold text-blue" font-size="11px" text-anchor="middle">មធ្យម</text>
+
+      <rect x="160" y="0" width="65" height="38" class="pill-normal"/>
+      <text x="192" y="24" class="font-reg text-muted" font-size="11px" text-anchor="middle">ខ្ពស់</text>
+
+      <rect x="235" y="0" width="75" height="38" class="pill-normal"/>
+      <text x="272" y="24" class="font-reg text-muted" font-size="11px" text-anchor="middle">បន្ទាន់</text>
+    </g>
+  </g>
+
+  <!-- Field 4 & 5: Due Date & Assignee Row -->
+  <g transform="translate(475, 415)">
+    <!-- Due Date -->
+    <text x="0" y="0" class="font-bold text-dark" font-size="13px">កាលបរិច្ឆេទផុតកំណត់ (Due Date) *</text>
+    <rect x="0" y="12" width="310" height="40" class="input-box"/>
+    <text x="15" y="37" class="font-reg text-dark" font-size="13px">📅 2026-11-20</text>
+
+    <!-- Assignee -->
+    <text x="345" y="0" class="font-bold text-dark" font-size="13px">អ្នកទទួលខុសត្រូវ (Assignee) *</text>
+    <rect x="345" y="12" width="310" height="40" class="input-box"/>
+    <text x="360" y="37" class="font-reg text-dark" font-size="13px">👤 ពិសិដ្ឋ បញ្ញាវុឌ្ឍ (Team Lead) ▾</text>
+  </g>
+
+  <!-- Field 6: Description Textarea -->
+  <text x="475" y="500" class="font-bold text-dark" font-size="13px">សេចក្តីពិពណ៌នាលម្អិត (Description / Acceptance Criteria)</text>
+  <rect x="475" y="515" width="655" height="130" class="input-box"/>
+  <text x="490" y="540" class="font-reg text-muted" font-size="13px">
+    - បង្កើតទំព័រលម្អិតការងារ route parameter :id
+  </text>
+  <text x="490" y="565" class="font-reg text-muted" font-size="13px">
+    - បញ្ចូលប៊ូតុង Request Changes និង Approve ផ្ទៀងផ្ទាត់សិទ្ធិ Role
+  </text>
+  <text x="490" y="590" class="font-reg text-muted" font-size="13px">
+    - ភ្ជាប់ប្រព័ន្ធ Comments Feed និង local storage mock API
+  </text>
+
+  <!-- Form Actions (Cancel & Create Buttons) -->
+  <line x1="475" y1="675" x2="1130" y2="675" stroke="#f1f5f9" stroke-width="1.5"/>
+
+  <g transform="translate(860, 705)">
+    <rect width="110" height="42" class="btn-cancel"/>
+    <text x="55" y="26" class="font-med text-muted" font-size="13px" text-anchor="middle">បោះបង់</text>
+  </g>
+
+  <g transform="translate(985, 705)">
+    <rect width="145" height="42" class="btn-submit"/>
+    <text x="72" y="26" class="font-bold" fill="#ffffff" font-size="13px" text-anchor="middle">✓ បង្កើតការងារ</text>
+  </g>
+</svg>

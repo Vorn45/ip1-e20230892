@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
-import Navbar from './components/Navbar.vue';
+import HeaderBar from './components/HeaderBar.vue';
 import { useUserStore } from './stores/userStore';
 
 const userStore = useUserStore();
@@ -12,7 +12,7 @@ onMounted(() => {
 
 <template>
   <div class="app-layout">
-    <Navbar />
+    <HeaderBar />
     <main class="main-content">
       <router-view />
     </main>
@@ -24,6 +24,7 @@ onMounted(() => {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: #f8fafc;
 }
 
 .main-content {
