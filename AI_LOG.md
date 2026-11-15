@@ -40,6 +40,15 @@
 
 ---
 
+## 2026-11-15 · Milestone M1 Frontend Prototype implementation
+**Tool:** Antigravity (Gemini)
+**Asked:** Build M1 Frontend prototype for PlanFlow in Vue 3 + TypeScript with Pinia, Vue Router, mock service layer, client-side validation form, wireframes, and ESLint configuration
+**Kept:** Vue 3 SPA architecture with 5 routes (`/projects`, `/projects/new`, `/projects/:id`, `/tasks`, `/:pathMatch`), Pinia stores (`projectStore`, `taskStore`, `userStore`), mock API service layer (`services/api.ts`, `services/mockData.ts`, `public/mock/db.json`), reactive client-side form validation, Balsamiq wireframes PDF in `docs/wireframes/`, loading/empty/error state components, strict TypeScript compilation, ESLint 9+ flat configuration, and MILESTONES.md design explanation for store vs component state
+**Rejected:** Overly strict stylistic single-line HTML element newline ESLint rules in favor of standard Vue essential linting to prioritize code correctness
+**Checked by:** Verified `vue-tsc -b` passed with 0 errors, `npm run lint` passed with 0 errors, and `npm run build` succeeded with 0 errors
+
+---
+
 <!-- Copy this template for each new entry:
 
 ## YYYY-MM-DD · Short description

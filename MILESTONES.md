@@ -23,16 +23,27 @@
 ---
 
 ## M1 Frontend Prototype (Week 5)
-*(Pending Week 5)*
-- [ ] Wireframes (photo or tool) of the main screens in `docs/`
-- [ ] Vue 3 + TypeScript app created with Vite; strict mode on; ESLint passes
-- [ ] At least 4 routes, including a detail page with a route parameter
-- [ ] At least one form with client-side validation
-- [ ] A Pinia store and a service layer calling a mock API (json-server or local JSON)
-- [ ] Loading, empty and error states visible
+- [x] Wireframes (photo or tool) of the main screens in `docs/` (`docs/wireframes/balsamiq_wireframes.pdf` and SVGs in `docs/wireframes/`)
+- [x] Vue 3 + TypeScript app created with Vite; strict mode on; ESLint passes
+- [x] At least 4 routes, including a detail page with a route parameter (`/`, `/projects`, `/projects/:id`, `/projects/new`, `/tasks`)
+- [x] At least one form with client-side validation (`CreateProjectView.vue` with real-time validation on title, description, deadline, owner)
+- [x] A Pinia store and a service layer calling a mock API (json-server or local JSON) (`projectStore`, `taskStore`, `userStore`, backed by `services/api.ts` and `public/mock/db.json`)
+- [x] Loading, empty and error states visible (`LoadingState.vue`, `EmptyState.vue`, `ErrorState.vue` across all views)
 
 ### Explain: What state lives in the store and what stays inside a component? Why?
-*To be completed in M1.*
+**1. What lives in the Pinia store (Shared Application Domain State):**
+- **Domain entity collections & active records:** The list of `projects`, the currently active `currentProject`, `projectTasks`, and `paginatedTasks`. These entities represent shared backend domain data needed across multiple routes (e.g. navigating from `/projects` to `/projects/:id` or exploring `/tasks`).
+- **Session & identity state:** `currentUser` and `users` (including active role `MANAGER` vs `MEMBER`). This identity determines authorization rules (e.g., whether status buttons for approval or work-in-progress are enabled or forbidden) and is needed globally by the navbar, detail inspector, and route views.
+- **Global async status & errors:** Store-level `isLoading` and `error` states for asynchronous operations, ensuring consistent loading indicators and error recovery.
+
+**2. What stays inside a component (Local Ephemeral UI State):**
+- **Form input drafts & touched states:** Reactive objects like `form.title`, `form.description`, `form.deadline` in `CreateProjectView`, and `newCommentText` in `ProjectDetailView`.
+- **Client-side validation errors:** Field-level `touched` flags and computed error strings (`errors.title`, `errors.deadline`).
+- **Ephemeral UI controls:** Active tab selection (`activeTab = 'ALL' | 'TODO' | ...`), local action feedback toast timeouts, modal visibility toggles, and dropdown open/close states.
+
+**3. Why this separation matters:**
+- **Reactivity performance & clean boundaries:** Storing form input keystrokes or UI toggles in a global store introduces unnecessary global reactivity tracking, excessive action dispatching, and memory bloat. Form state should naturally reset with the component lifecycle when unmounted or canceled.
+- **Single source of truth:** In contrast, keeping projects and tasks in Pinia guarantees that updating a task's status or deleting a project immediately synchronizes everywhere (e.g., updating progress percentages in detail view and reflecting in metrics) without fragile prop-drilling or event-bus spaghetti. This architecture enables swapping the mock service layer for the real NestJS API in Milestone 3 without changing component template logic.
 
 ---
 

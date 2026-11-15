@@ -1,0 +1,148 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; }
+      .nav { fill: #1e293b; }
+      .nav-text { fill: #ffffff; font-family: ui-sans-serif, system-ui, sans-serif; font-size: 16px; font-weight: 600; }
+      .nav-link { fill: #94a3b8; font-family: ui-sans-serif, system-ui, sans-serif; font-size: 14px; }
+      .nav-link.active { fill: #38bdf8; font-weight: 600; }
+      .card { fill: #ffffff; stroke: #e2e8f0; stroke-width: 1.5; rx: 8; }
+      .card-header { font-family: ui-sans-serif, system-ui, sans-serif; font-size: 18px; font-weight: 700; fill: #0f172a; }
+      .text-muted { font-family: ui-sans-serif, system-ui, sans-serif; font-size: 13px; fill: #64748b; }
+      .badge { rx: 4; }
+      .badge-active { fill: #dcfce7; }
+      .badge-active-txt { fill: #166534; font-family: ui-sans-serif, system-ui, sans-serif; font-size: 11px; font-weight: 600; }
+      .badge-plan { fill: #e0f2fe; }
+      .badge-plan-txt { fill: #0369a1; font-family: ui-sans-serif, system-ui, sans-serif; font-size: 11px; font-weight: 600; }
+      .btn-primary { fill: #2563eb; rx: 6; }
+      .btn-text { fill: #ffffff; font-family: ui-sans-serif, system-ui, sans-serif; font-size: 13px; font-weight: 600; text-anchor: middle; }
+      .btn-outline { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.5; rx: 6; }
+      .btn-outline-text { fill: #334155; font-family: ui-sans-serif, system-ui, sans-serif; font-size: 13px; font-weight: 500; text-anchor: middle; }
+      .progress-bg { fill: #e2e8f0; rx: 4; }
+      .progress-fill { fill: #3b82f6; rx: 4; }
+      .title { font-family: ui-sans-serif, system-ui, sans-serif; font-size: 26px; font-weight: 800; fill: #0f172a; }
+      .subtitle { font-family: ui-sans-serif, system-ui, sans-serif; font-size: 14px; fill: #64748b; }
+      .input-box { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.5; rx: 6; }
+      .input-placeholder { font-family: ui-sans-serif, system-ui, sans-serif; font-size: 13px; fill: #94a3b8; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="800" class="bg"/>
+
+  <!-- Top Navigation Bar -->
+  <rect width="1200" height="60" class="nav"/>
+  <text x="40" y="36" class="nav-text">PlanFlow</text>
+  <text x="140" y="36" class="nav-link active">Projects</text>
+  <text x="230" y="36" class="nav-link">Task Explorer</text>
+  <text x="350" y="36" class="nav-link">About</text>
+
+  <!-- User role badge on right -->
+  <rect x="980" y="16" width="180" height="28" rx="14" fill="#334155"/>
+  <circle cx="996" cy="30" r="8" fill="#38bdf8"/>
+  <text x="1012" y="35" class="nav-link" fill="#f1f5f9" font-size="12px">Role: Project Manager</text>
+
+  <!-- Header Area -->
+  <text x="40" y="110" class="title">Projects Dashboard</text>
+  <text x="40" y="132" class="subtitle">Overview of active team projects, delivery timelines, and sprint progress.</text>
+
+  <g transform="translate(1010, 90)">
+    <rect width="150" height="38" class="btn-primary"/>
+    <text x="75" y="24" class="btn-text">+ New Project</text>
+  </g>
+
+  <!-- Stats Bar -->
+  <rect x="40" y="160" width="260" height="80" class="card"/>
+  <text x="60" y="190" class="text-muted">Total Projects</text>
+  <text x="60" y="225" font-family="ui-sans-serif, system-ui" font-size="28px" font-weight="700" fill="#0f172a">6</text>
+
+  <rect x="325" y="160" width="260" height="80" class="card"/>
+  <text x="345" y="190" class="text-muted">Active Sprints</text>
+  <text x="345" y="225" font-family="ui-sans-serif, system-ui" font-size="28px" font-weight="700" fill="#16a34a">4</text>
+
+  <rect x="610" y="160" width="260" height="80" class="card"/>
+  <text x="630" y="190" class="text-muted">Tasks in Review</text>
+  <text x="630" y="225" font-family="ui-sans-serif, system-ui" font-size="28px" font-weight="700" fill="#d97706">8</text>
+
+  <rect x="895" y="160" width="265" height="80" class="card"/>
+  <text x="915" y="190" class="text-muted">Overall Completion</text>
+  <text x="915" y="225" font-family="ui-sans-serif, system-ui" font-size="28px" font-weight="700" fill="#2563eb">68%</text>
+
+  <!-- Filter / Search Row -->
+  <rect x="40" y="260" width="380" height="40" class="input-box"/>
+  <text x="56" y="285" class="input-placeholder">Search projects by title or description...</text>
+
+  <rect x="435" y="260" width="160" height="40" class="input-box"/>
+  <text x="450" y="285" class="text-muted">Status: All (6) ▾</text>
+
+  <rect x="610" y="260" width="160" height="40" class="input-box"/>
+  <text x="625" y="285" class="text-muted">Sort: Deadline ▾</text>
+
+  <!-- Project Cards Grid -->
+  <!-- Card 1 -->
+  <rect x="40" y="320" width="545" height="195" class="card"/>
+  <text x="65" y="355" class="card-header">Mobile Banking App Redesign</text>
+  <rect x="480" y="338" width="80" height="22" class="badge badge-active"/>
+  <text x="520" y="353" class="badge-active-txt" text-anchor="middle">ACTIVE</text>
+  <text x="65" y="380" class="text-muted">Revamp consumer iOS &amp; Android banking application UX with biometric auth.</text>
+  <text x="65" y="420" class="text-muted">Progress: 14 / 18 tasks completed (78%)</text>
+  <rect x="65" y="430" width="495" height="8" class="progress-bg"/>
+  <rect x="65" y="430" width="386" height="8" class="progress-fill"/>
+  <text x="65" y="475" class="text-muted">Deadline: Dec 15, 2026</text>
+  <text x="240" y="475" class="text-muted">Lead: Sarah Connor</text>
+  <rect x="445" y="455" width="115" height="34" class="btn-outline"/>
+  <text x="502" y="477" class="btn-outline-text">View Details →</text>
+
+  <!-- Card 2 -->
+  <rect x="615" y="320" width="545" height="195" class="card"/>
+  <text x="640" y="355" class="card-header">Cloud Migration &amp; Infrastructure</text>
+  <rect x="1055" y="338" width="80" height="22" class="badge badge-active"/>
+  <text x="1095" y="353" class="badge-active-txt" text-anchor="middle">ACTIVE</text>
+  <text x="640" y="380" class="text-muted">Migrate legacy on-prem services to containerized AWS clusters with IaC.</text>
+  <text x="640" y="420" class="text-muted">Progress: 6 / 12 tasks completed (50%)</text>
+  <rect x="640" y="430" width="495" height="8" class="progress-bg"/>
+  <rect x="640" y="430" width="247" height="8" class="progress-fill"/>
+  <text x="640" y="475" class="text-muted">Deadline: Jan 10, 2027</text>
+  <text x="815" y="475" class="text-muted">Lead: Alex Mercer</text>
+  <rect x="1020" y="455" width="115" height="34" class="btn-outline"/>
+  <text x="1077" y="477" class="btn-outline-text">View Details →</text>
+
+  <!-- Card 3 -->
+  <rect x="40" y="535" width="545" height="195" class="card"/>
+  <text x="65" y="570" class="card-header">Data Pipeline Modernization</text>
+  <rect x="480" y="553" width="80" height="22" class="badge badge-plan"/>
+  <text x="520" y="568" class="badge-plan-txt" text-anchor="middle">PLANNING</text>
+  <text x="65" y="595" class="text-muted">Implement automated ETL pipelines streaming real-time IoT metrics.</text>
+  <text x="65" y="635" class="text-muted">Progress: 1 / 8 tasks completed (12%)</text>
+  <rect x="65" y="645" width="495" height="8" class="progress-bg"/>
+  <rect x="65" y="645" width="60" height="8" class="progress-fill"/>
+  <text x="65" y="690" class="text-muted">Deadline: Feb 28, 2027</text>
+  <text x="240" y="690" class="text-muted">Lead: John Doe</text>
+  <rect x="445" y="670" width="115" height="34" class="btn-outline"/>
+  <text x="502" y="692" class="btn-outline-text">View Details →</text>
+
+  <!-- Card 4 -->
+  <rect x="615" y="535" width="545" height="195" class="card"/>
+  <text x="640" y="570" class="card-header">Customer Portal SSO Integration</text>
+  <rect x="1055" y="553" width="80" height="22" class="badge badge-active"/>
+  <text x="1095" y="553" class="badge-active-txt" text-anchor="middle">ACTIVE</text>
+  <text x="640" y="595" class="text-muted">Integrate OAuth 2.0 and SAML SSO across multi-tenant enterprise portal.</text>
+  <text x="640" y="635" class="text-muted">Progress: 9 / 10 tasks completed (90%)</text>
+  <rect x="640" y="645" width="495" height="8" class="progress-bg"/>
+  <rect x="640" y="645" width="445" height="8" class="progress-fill"/>
+  <text x="640" y="690" class="text-muted">Deadline: Nov 30, 2026</text>
+  <text x="815" y="690" class="text-muted">Lead: Elena Rostova</text>
+  <rect x="1020" y="670" width="115" height="34" class="btn-outline"/>
+  <text x="1077" y="692" class="btn-outline-text">View Details →</text>
+
+  <!-- Pagination Controls -->
+  <text x="40" y="760" class="text-muted">Showing 1 to 4 of 6 projects</text>
+  <rect x="990" y="740" width="35" height="30" class="btn-outline"/>
+  <text x="1007" y="760" class="btn-outline-text">«</text>
+  <rect x="1035" y="740" width="35" height="30" fill="#2563eb" rx="4"/>
+  <text x="1052" y="760" class="btn-text">1</text>
+  <rect x="1080" y="740" width="35" height="30" class="btn-outline"/>
+  <text x="1097" y="760" class="btn-outline-text">2</text>
+  <rect x="1125" y="740" width="35" height="30" class="btn-outline"/>
+  <text x="1142" y="760" class="btn-outline-text">»</text>
+</svg>
